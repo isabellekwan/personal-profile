@@ -2,7 +2,7 @@ import React from 'react'
 
 const TabAbout = ({active, selectTab, children}) => {
     const buttonClasses = active 
-    ? "text-[#7c6752] border-b border-[#7c6752]" 
+    ? "text-[#C4A484] border-b border-[#7c6752]" 
     : "text-[#7c6752]";
 
     return (
