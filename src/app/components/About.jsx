@@ -26,7 +26,7 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul>
-        <li>★ Bachelor of Science in Computing Science, SFU</li>
+        <li>★ B.Sc in Computing Science, Simon Fraser University</li>
         <li>{"★ High School Diploma, St. Patrick's Regional Secondary School"}</li>
       </ul>
     )
