@@ -26,7 +26,7 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul>
-        <li>★ Bachelor of Science in Computing Science, Simon Fraser University</li>
+        <li>★ Bachelor of Science in Computing Science, SFU</li>
         <li>{"★ High School Diploma, St. Patrick's Regional Secondary School"}</li>
       </ul>
     )
@@ -38,7 +38,7 @@ const TAB_DATA = [
       <ul>
         <li>★ Undergraduate Research Assistant, SFU Visual Computing </li>
         <li>★ Student Ambassador, SFU Faculty of Applied Sciences</li>
-        <li>★ Director of Communications, Computing Science Student Society </li>
+        <li>★ Director of Communications, CS Student Society </li>
         <li>★ Tutor, SFU and Self-employed</li>
       </ul>
     )
@@ -49,7 +49,7 @@ const TAB_DATA = [
     content: (
       <ul>
         <li>★ SFU Undergraduate Entrance Scholarship with Distinction</li>
-        <li>{"★ Dean's Honour Roll"}</li>
+        <li>{"★ Dean's Honour Roll Fall 2023"}</li>
         <li>★ Computing Science Student Society Undergraduate Award</li>
         <li>★ BC Excellence Award</li>
         <li>{"★ Govenor General's Bronze Academic Medal"}</li>
