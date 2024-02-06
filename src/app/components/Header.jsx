@@ -11,7 +11,7 @@ const Header = () => {
         <div className="grid grid-cols-1 sm:grid-cols-12">
             <div className="col-span-7 place-self-center text-center sm:text-left">
                 <h1 className="text-[#5d4d3d] mb-4 text-4xl sm:text-5xl lg:text-6xl font-bold">
-                    <span className="text-transparent bg-clip-text bg-[#5d4d3d]"> Hello, I'm {""}</span><br></br>
+                    <span className="text-transparent bg-clip-text bg-[#5d4d3d]"> Hello, I&apos;m {""}</span><br></br>
                     <TypeAnimation
                         sequence={[
                             'Isabelle',

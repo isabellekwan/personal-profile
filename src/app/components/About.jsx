@@ -27,7 +27,7 @@ const TAB_DATA = [
     content: (
       <ul>
         <li>★ Bachelor of Science in Computing Science, Simon Fraser University</li>
-        <li>★ High School Diploma, St. Patrick's Regional Secondary School</li>
+        <li>★ High School Diploma, St. Patrick&pos;s Regional Secondary School</li>
       </ul>
     )
   },
@@ -49,10 +49,10 @@ const TAB_DATA = [
     content: (
       <ul>
         <li>★ SFU Undergraduate Entrance Scholarship with Distinction</li>
-        <li>★ Dean's Honour Roll</li>
+        <li>★ Dean&apos;s Honour Roll</li>
         <li>★ Computing Science Student Society Undergraduate Award</li>
         <li>★ BC Excellence Award</li>
-        <li>★ Govenor General's Bronze Academic Medal</li>
+        <li>★ Govenor General&pos;s Bronze Academic Medal</li>
       </ul>
     )
   }
