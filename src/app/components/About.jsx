@@ -106,11 +106,9 @@ const About = () => {
             </div>
           </div>
           <div className="ml-8 p-8 text-left w-1/2">
-          <h2 className="text-xl font-semibold text-[#5d4d3d] mb-4">More About Me!</h2>
+          <h2 className="text-xl font-semibold text-[#5d4d3d] mb-4">My life!</h2>
             <p className="text-[#7c6752]">
-              Favourite<br/>
-              Favourite
-
+              Insert Picture Book
             </p>
           </div>
         </div>
