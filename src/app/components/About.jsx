@@ -14,6 +14,7 @@ const TAB_DATA = [
         <li>{"    ★ HTML/CSS"}</li>
         <li>{"    ★ Python"}</li>
         <li>{"    ★ C/C++"}</li>
+        <li></li>
         <li><strong>Frameworks and Libraries</strong></li>
         <li>{"    ★ ReactJS"}</li>
         <li>{"    ★ NextJS"}</li>
