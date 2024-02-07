@@ -9,6 +9,7 @@ const TAB_DATA = [
     content: (
       <ul>
         <li><strong>Languages</strong></li>
+        <br></br>
         <ul class="pl-8">
           <li>{"★ JavaScript"}</li>
           <li>{"★ TypeScript"}</li>
@@ -18,6 +19,7 @@ const TAB_DATA = [
         </ul>
         <br></br>
         <li><strong>Frameworks and Libraries</strong></li>
+        <br></br>
         <ul class="pl-8">
           <li>{"★ ReactJS"}</li>
           <li>{"★ NextJS"}</li>
