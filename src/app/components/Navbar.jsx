@@ -25,6 +25,7 @@ const Navbar = () => {
             <Link href={'/'}>
                 <Image src="/images/logo.png" alt="Logo" className="h-10 md:h-12" />
             </Link>
+            <p><strong>Isabelle Kwan</strong></p>
             <div className="menu hidden md:block md:w-auto" id="navbar">
                 <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
                     {
