@@ -9,19 +9,22 @@ const TAB_DATA = [
     content: (
       <ul>
         <li><strong>Languages</strong></li>
-        <li>{"    ★ JavaScript"}</li>
-        <li>{"    ★ TypeScript"}</li>
-        <li>{"    ★ HTML/CSS"}</li>
-        <li>{"    ★ Python"}</li>
-        <li>{"    ★ C/C++"}</li>
-        <li></li>
+        <ul>
+          <li>{"    ★ JavaScript"}</li>
+          <li>{"    ★ TypeScript"}</li>
+          <li>{"    ★ HTML/CSS"}</li>
+          <li>{"    ★ Python"}</li>
+          <li>{"    ★ C/C++"}</li>
+        </ul>
         <li><strong>Frameworks and Libraries</strong></li>
-        <li>{"    ★ ReactJS"}</li>
-        <li>{"    ★ NextJS"}</li>
-        <li>{"    ★ AngularJS"}</li>
-        <li>{"    ★ Ruby on Rails"}</li>
-        <li>{"    ★ Bootstrap"}</li>
-        <li>{"    ★ Tailwind"}</li>
+        <ul>
+          <li>{"    ★ ReactJS"}</li>
+          <li>{"    ★ NextJS"}</li>
+          <li>{"    ★ AngularJS"}</li>
+          <li>{"    ★ Ruby on Rails"}</li>
+          <li>{"    ★ Bootstrap"}</li>
+          <li>{"    ★ Tailwind"}</li>
+        </ul>
       </ul>
     )
   },
