@@ -16,7 +16,7 @@ const Header = () => {
                         sequence={[
                             'Isabelle',
                             1000,
-                            'a 2nd Year CS Student',
+                            'a 3nd Year CS Student',
                             1000,
                             'a Web Developer',
                             1000,
