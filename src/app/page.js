@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Header from './components/Header'
 import Navbar from './components/Navbar'
 import About from './components/About'
+import Projects from './components/Projects'
 
 // colours:
 // beige: #e9e5e1
@@ -18,6 +19,7 @@ export default function Home() {
       <div className="container mt-24 mx-auto px-12 py-4">
         <Header/>
         <About/>
+        <Projects/>
       </div>
     </main>
   )
