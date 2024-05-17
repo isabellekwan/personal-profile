@@ -11,7 +11,6 @@ import Projects from './components/Projects'
 // brown: #6f5c49
 // dark brown: ##5d4d3d
 
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#e9e5e1]">
