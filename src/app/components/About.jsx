@@ -82,13 +82,13 @@ const About = () => {
     <section className="flex items-center justify-center text-align-center mt-12">
       <div className="text-center">
         <h1 className="text-[#5d4d3d] mt-12 mb-4 lg:mb-6 text-3xl sm:text-5xl lg:text-5xl font-bold">About Me</h1>
-        <p className="text-[#7c6752] text-base sm:text-lg mt-2 mb-6 lg:text-xl px-20">
+        <p className="text-[#7c6752] text-base sm:text-lg mt-2 mb-6 lg:text-xl px-15">
           Hi there! My name is Isabelle Kwan and I am a third year student pursuing a Bachelor of Science in Computing Science at Simon Fraser University! 
           I am particularly interested in full-stack development, but I am always open to learning and exploring different topics in technology.
           Currently, I have experience in web development, graphic design, and full-stack development! As well, I have experience in HCI and visual computing research!
           <br /><br />
-          Aside from that, some personal interests of mine include dance, fashion, poetry, crochet, and video games <br/>
-          (My personal favorites are Animal Crossing and Unpacking on Steam!). As well, I love making personal vlogs for my  <br/> YouTube channel
+          Aside from that, some personal interests of mine include dance, fashion, poetry, crochet, and video games
+          (My personal favorites are Animal Crossing and Unpacking on Steam!). As well, I love making personal vlogs for my YouTube channel
           which you can find here!
           <a href="https://www.youtube.com/channel/UC11O9tOQoa0FszZdmI4oAKw" target="_blank" rel="noopener noreferrer" className=" text-[#5d4d3d] font-bold hover:text-[#7c6752]"> @bellekwan</a>
         </p>
