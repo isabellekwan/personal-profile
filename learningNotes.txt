@@ -1,0 +1,11 @@
+Learned how to use NEXTJS.
+
+Did inline styling with TailWind
+
+Attempted to use Resend API, but did not own a unique email domain, 
+so opted for gmail email forwarding. Ran into issues with 2 step verification,
+but overcame by just typing https://myaccount.google.com/apppasswords into the search bar.
+
+Using nodemailer now. Referenced this tutorial: https://www.youtube.com/watch?v=t2LvPXHLrek
+
+Used environment variables to store valuable passwords.
