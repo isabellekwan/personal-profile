@@ -7,5 +7,7 @@ so opted for gmail email forwarding. Ran into issues with 2 step verification,
 but overcame by just typing https://myaccount.google.com/apppasswords into the search bar.
 
 Using nodemailer now. Referenced this tutorial: https://www.youtube.com/watch?v=t2LvPXHLrek
+Designed form with chakra UI. Struggled with directory/ path errors because I did not realize 
+endpoints could not be imbedded in subfolders. (Solution: move config and pages directly into /src)
 
 Used environment variables to store valuable passwords.
