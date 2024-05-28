@@ -8,9 +8,14 @@ import {
   Heading,
   Input,
   Text,
+  Flex,
+  Link,
+  Image,
   Textarea,
   useToast,
 } from "@chakra-ui/react";
+import GithubIcon from "../../../public/github-icon.svg";
+import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import { useState } from "react";
 import { sendContactForm } from "../../lib/api";
 
@@ -67,86 +72,85 @@ const EmailSection = () => {
   };
 
   return (
-    <Container maxW="450px" mt={12}>
-      <Heading>Contact</Heading>
-      {error && (
-        <Text color="red.300" my={4} fontSize="xl">
-          {error}
-        </Text>
-      )}
+    <Container maxW="lg" mt={12}>
+      <Flex justify="space-between">
+        <div>
+          <Heading className="text-[#5d4d3d] text-xl font-semibold mb-2">Contact</Heading>
+          <Flex mt={4}>
+            <Link href="https://github.com">
+              <Image src={GithubIcon} alt="Github Icon" />
+            </Link>
+            <Link href="https://linkedin.com">
+              <Image src={LinkedinIcon} alt="Linkedin Icon" />
+            </Link>
+          </Flex>
+        </div>
+        <div>
+          <FormControl isRequired isInvalid={touched.name && !values.name} mb={5}>
+            <FormLabel className="text-l text-[#5d4d3d] font-semibold">Name</FormLabel>
+            <Input
+              type="text"
+              name="name"
+              errorBorderColor="red.300"
+              value={values.name}
+              onChange={handleChange}
+              onBlur={onBlur}
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
 
-      <FormControl isRequired isInvalid={touched.name && !values.name} mb={5}>
-        <FormLabel>Name</FormLabel>
-        <Input
-          type="text"
-          name="name"
-          errorBorderColor="red.300"
-          value={values.name}
-          onChange={handleChange}
-          onBlur={onBlur}
-        />
-        <FormErrorMessage>Required</FormErrorMessage>
-      </FormControl>
+          <FormControl isRequired isInvalid={touched.email && !values.email} mb={5}>
+            <FormLabel className="text-l text-[#5d4d3d] font-semibold">Email</FormLabel>
+            <Input
+              type="email"
+              name="email"
+              errorBorderColor="red.300" // change border on error
+              value={values.email}
+              onChange={handleChange}
+              onBlur={onBlur}
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
 
-      <FormControl isRequired isInvalid={touched.email && !values.email} mb={5}>
-        <FormLabel>Email</FormLabel>
-        <Input
-          type="email"
-          name="email"
-          errorBorderColor="red.300" // change border on error
-          value={values.email}
-          onChange={handleChange}
-          onBlur={onBlur}
-        />
-        <FormErrorMessage>Required</FormErrorMessage>
-      </FormControl>
+          <FormControl mb={5} isRequired isInvalid={touched.subject && !values.subject}>
+            <FormLabel className="text-l text-[#5d4d3d] font-semibold">Subject</FormLabel>
+            <Input
+              type="text"
+              name="subject"
+              errorBorderColor="red.300"
+              value={values.subject}
+              onChange={handleChange}
+              onBlur={onBlur}
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
 
-      <FormControl
-        mb={5}
-        isRequired
-        isInvalid={touched.subject && !values.subject}
-      >
-        <FormLabel>Subject</FormLabel>
-        <Input
-          type="text"
-          name="subject"
-          errorBorderColor="red.300"
-          value={values.subject}
-          onChange={handleChange}
-          onBlur={onBlur}
-        />
-        <FormErrorMessage>Required</FormErrorMessage>
-      </FormControl>
+          <FormControl isRequired isInvalid={touched.message && !values.message} mb={5}>
+            <FormLabel className="text-l text-[#5d4d3d] font-semibold">Message</FormLabel>
+            <Textarea
+              type="text"
+              name="message"
+              rows={4}
+              errorBorderColor="red.300"
+              value={values.message}
+              onChange={handleChange}
+              onBlur={onBlur}
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
 
-      <FormControl
-        isRequired
-        isInvalid={touched.message && !values.message}
-        mb={5}
-      >
-        <FormLabel>Message</FormLabel>
-        <Textarea
-          type="text"
-          name="message"
-          rows={4}
-          errorBorderColor="red.300"
-          value={values.message}
-          onChange={handleChange}
-          onBlur={onBlur}
-        />
-        <FormErrorMessage>Required</FormErrorMessage>
-      </FormControl>
-
-      <Button
-        variant="outline"
-        colorScheme="blue"
-        isLoading={isLoading}
-        disabled={
-          !values.name || !values.email || !values.subject || !values.message
-        }
-        onClick={onSubmit}
-      >
-        Submit
-      </Button>
+          <Button
+            className="text-l text-[#5d4d3d] font-semibold"
+            variant="outline"
+            colorScheme="blue"
+            isLoading={isLoading}
+            disabled={!values.name || !values.email || !values.subject || !values.message}
+            onClick={onSubmit}
+          >
+            Submit
+          </Button>
+        </div>
+      </Flex>
     </Container>
   )
 }
