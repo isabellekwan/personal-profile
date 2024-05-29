@@ -1,43 +1,27 @@
-import React from 'react'
-import {
-  Button,
-  Container,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Heading,
-  Input,
-  Text,
-  Flex,
-  Link,
-  Image,
-  Textarea,
-  useToast,
+import React, { useState } from 'react';
+import { 
+  Button, FormControl, FormErrorMessage, 
+  FormLabel, Heading, Input, Link, 
+  Image, Textarea, useToast, Grid, Box,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
-import { useState } from "react";
 import { sendContactForm } from "../../lib/api";
 
-// variables used to store form values and states
 const initValues = { name: "", email: "", subject: "", message: "" };
-
 const initState = { isLoading: false, error: "", values: initValues };
-
 
 const EmailSection = () => {
   const toast = useToast();
   const [state, setState] = useState(initState);
   const [touched, setTouched] = useState({});
 
-  // set variables to make attribute access easier
   const { values, isLoading, error } = state;
 
   const onBlur = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }));
 
-  // function to track the changes made to the form
-  // will only change the form data of the event that triggered it
   const handleChange = ({ target }) =>
     setState((prev) => ({
       ...prev,
@@ -72,29 +56,39 @@ const EmailSection = () => {
   };
 
   return (
-    <Container maxW="lg" mt={12}>
-      <Flex justify="space-between">
-        <div>
-          <Heading className="text-[#5d4d3d] text-xl font-semibold mb-2">Contact</Heading>
-          <Flex mt={4}>
+    <Box maxW="container.xl" mt={12} px={4}>
+      <SimpleGrid 
+        columns={[1, null, 2]} 
+      >
+        <Box p={4}>
+          <Heading className="text-[#5d4d3d] text-xl mb-2">Contact</Heading>
+          <Box mt={4} mb={6}>
             <Link href="https://github.com">
               <Image src={GithubIcon} alt="Github Icon" />
             </Link>
-            <Link href="https://linkedin.com">
+            <Link href="https://linkedin.com" ml={4}>
               <Image src={LinkedinIcon} alt="Linkedin Icon" />
             </Link>
-          </Flex>
-        </div>
-        <div>
-          <FormControl isRequired isInvalid={touched.name && !values.name} mb={5}>
+          </Box>
+        </Box>
+        <Box p={4}>
+          <FormControl isRequired isInvalid={touched.name && !values.name} mb={5} requiredIndicator={<span style={{ color: '#C4A484' }}>*</span>}>
             <FormLabel className="text-l text-[#5d4d3d] font-semibold">Name</FormLabel>
             <Input
               type="text"
               name="name"
+              variant='outline' 
+              placeholder='Your Name'
+              _placeholder={{ opacity: 0.7, color: '#5d4d3d' }}
+              bg="white"
+              borderWidth="2px"
+              borderColor="#5d4d3d"
+              focusBorderColor='#C4A484'
               errorBorderColor="red.300"
               value={values.name}
               onChange={handleChange}
               onBlur={onBlur}
+              width="100%"
             />
             <FormErrorMessage>Required</FormErrorMessage>
           </FormControl>
@@ -104,10 +98,18 @@ const EmailSection = () => {
             <Input
               type="email"
               name="email"
-              errorBorderColor="red.300" // change border on error
+              variant='outline' 
+              placeholder='yourname@email.com'
+              _placeholder={{ opacity: 0.7, color: '#5d4d3d' }}
+              bg="white"
+              borderWidth="2px"
+              borderColor="#5d4d3d"
+              focusBorderColor='#C4A484'
+              errorBorderColor="red.300"
               value={values.email}
               onChange={handleChange}
               onBlur={onBlur}
+              width="100%"
             />
             <FormErrorMessage>Required</FormErrorMessage>
           </FormControl>
@@ -117,10 +119,18 @@ const EmailSection = () => {
             <Input
               type="text"
               name="subject"
+              variant="outline"
+              placeholder="Subject"
+              _placeholder={{ opacity: 0.7, color: '#5d4d3d' }}
+              bg="white"
+              borderWidth="2px"
+              borderColor="#5d4d3d"
+              focusBorderColor='#C4A484'
               errorBorderColor="red.300"
               value={values.subject}
               onChange={handleChange}
               onBlur={onBlur}
+              width="100%"
             />
             <FormErrorMessage>Required</FormErrorMessage>
           </FormControl>
@@ -128,13 +138,20 @@ const EmailSection = () => {
           <FormControl isRequired isInvalid={touched.message && !values.message} mb={5}>
             <FormLabel className="text-l text-[#5d4d3d] font-semibold">Message</FormLabel>
             <Textarea
-              type="text"
               name="message"
               rows={4}
+              variant="outline"
+              placeholder="Please type your message here!"
+              _placeholder={{ opacity: 0.7, color: '#5d4d3d' }}
+              bg="white"
+              borderWidth="2px"
+              borderColor="#5d4d3d"
+              focusBorderColor='#C4A484'
               errorBorderColor="red.300"
               value={values.message}
               onChange={handleChange}
               onBlur={onBlur}
+              width="100%"
             />
             <FormErrorMessage>Required</FormErrorMessage>
           </FormControl>
@@ -142,17 +159,18 @@ const EmailSection = () => {
           <Button
             className="text-l text-[#5d4d3d] font-semibold"
             variant="outline"
-            colorScheme="blue"
+            colorScheme="#5d4d3d"
             isLoading={isLoading}
             disabled={!values.name || !values.email || !values.subject || !values.message}
             onClick={onSubmit}
+            width="100%"
           >
             Submit
           </Button>
-        </div>
-      </Flex>
-    </Container>
-  )
+        </Box>
+      </SimpleGrid>
+    </Box>
+  );
 }
 
-export default EmailSection
+export default EmailSection;
