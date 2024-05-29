@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { 
   Button, FormControl, FormErrorMessage, 
-  FormLabel, Heading, Input, Link, 
-  Image, Textarea, useToast, Grid, Box,
+  FormLabel, Heading, Input, Link, Text,
+  Image, Textarea, useToast, Flex, Box,
   SimpleGrid,
 } from "@chakra-ui/react";
 import GithubIcon from "../../../public/github-icon.svg";
@@ -60,18 +60,22 @@ const EmailSection = () => {
       <SimpleGrid 
         columns={[1, null, 2]} 
       >
-        <Box p={4}>
-          <Heading className="text-[#5d4d3d] text-xl mb-2">Contact</Heading>
-          <Box mt={4} mb={6}>
-            <Link href="https://github.com">
-              <Image src={GithubIcon} alt="Github Icon" />
+        <Box p={4} pl={0} mr={6}>
+          <Heading className="text-[#5d4d3d] text-xl mb-2 font-light">Let's Connect!</Heading>
+        <Text color="#5d4d3d" mb={2}>
+            I'm always looking for new opportunities and my inbox is always open. Whether
+            you have a question or just want to say hi, I will try to get back to you as soon as I can!
+          </Text>
+          <Flex mt={6} alignItems="center">
+            <Link href="https://github.com/isabellekwan">
+              <Image color="#5d4d3d" src="/github-icon.svg" alt="Github Icon" />
             </Link>
-            <Link href="https://linkedin.com" ml={4}>
-              <Image src={LinkedinIcon} alt="Linkedin Icon" />
+            <Link href="https://www.linkedin.com/in/isabelle-kwan/" ml={4}>
+              <Image color="#5d4d3d" src="/linkedin-icon.svg" alt="Linkedin Icon" />
             </Link>
-          </Box>
+          </Flex>
         </Box>
-        <Box p={4}>
+        <Box p={4} ml={10}>
           <FormControl isRequired isInvalid={touched.name && !values.name} mb={5} requiredIndicator={<span style={{ color: '#C4A484' }}>*</span>}>
             <FormLabel className="text-l text-[#5d4d3d] font-semibold">Name</FormLabel>
             <Input
@@ -89,6 +93,7 @@ const EmailSection = () => {
               onChange={handleChange}
               onBlur={onBlur}
               width="100%"
+              _hover={{borderColor:'#C4A484'}}
             />
             <FormErrorMessage>Required</FormErrorMessage>
           </FormControl>
@@ -110,6 +115,7 @@ const EmailSection = () => {
               onChange={handleChange}
               onBlur={onBlur}
               width="100%"
+              _hover={{borderColor:'#C4A484'}}
             />
             <FormErrorMessage>Required</FormErrorMessage>
           </FormControl>
@@ -131,6 +137,7 @@ const EmailSection = () => {
               onChange={handleChange}
               onBlur={onBlur}
               width="100%"
+              _hover={{borderColor:'#C4A484'}}
             />
             <FormErrorMessage>Required</FormErrorMessage>
           </FormControl>
@@ -152,6 +159,7 @@ const EmailSection = () => {
               onChange={handleChange}
               onBlur={onBlur}
               width="100%"
+              _hover={{borderColor:'#C4A484'}}
             />
             <FormErrorMessage>Required</FormErrorMessage>
           </FormControl>
@@ -160,8 +168,8 @@ const EmailSection = () => {
             className="text-l text-[#5d4d3d] font-semibold"
             variant="outline"
             colorScheme="#5d4d3d"
-            isLoading={isLoading}
             disabled={!values.name || !values.email || !values.subject || !values.message}
+            isLoading={isLoading}
             onClick={onSubmit}
             width="100%"
           >
