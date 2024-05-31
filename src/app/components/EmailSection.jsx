@@ -61,10 +61,9 @@ const EmailSection = () => {
         columns={[1, null, 2]} 
       >
         <Box p={4} pl={0} mr={6}>
-          <Heading className="text-[#5d4d3d] text-xl mb-2 font-light">Let's Connect!</Heading>
+          <Heading className="text-[#5d4d3d] text-xl mb-2 font-light">{"Let's Connect!"}</Heading>
         <Text color="#5d4d3d" mb={2}>
-            I'm always looking for new opportunities and my inbox is always open. Whether
-            you have a question or just want to say hi, I will try to get back to you as soon as I can!
+            {"I'm always looking for new opportunities and my inbox is always open. Whether you have a question or just want to say hi, I will try to get back to you as soon as I can!"}
           </Text>
           <Flex mt={6} alignItems="center">
             <Link href="https://github.com/isabellekwan">
