@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import About from './components/About'
 import Projects from './components/Projects'
 import EmailSection from './components/EmailSection'
+import ImageSlider from './components/ImageSlider';
 import { ChakraProvider } from '@chakra-ui/react'
 
 // colours:

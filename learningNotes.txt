@@ -15,3 +15,6 @@ Struggled with directory/ path errors because I did not realize endpoints could 
 imbedded in subfolders. (Solution: move config and pages directly into /src)
 
 Used environment variables to store valuable passwords.
+
+Used keen-slider library to make image slideshow.(Documentation and examples were very helpful)
+Had struggles with format, but fixed by ensuring no parent elements had "flex", fixed with css grid. 

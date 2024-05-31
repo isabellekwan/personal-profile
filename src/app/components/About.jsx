@@ -1,6 +1,7 @@
 "use client";
 import React, { useTransition, useState } from 'react'
 import TabAbout from './TabAbout';
+import ImageSlider from './ImageSlider'
 
 const TAB_DATA = [
   {
@@ -46,8 +47,10 @@ const TAB_DATA = [
     id: "experience",
     content: (
       <ul>
-        <li>★ Undergraduate Research Assistant, SFU Visual Computing </li>
+        <li>★ Undergraduate Research Assistant, Interactive Experiences Lab</li>
+        <li>★ Research Assistant Volunteer, GrUVI Lab </li>
         <li>★ Student Ambassador, SFU Faculty of Applied Sciences</li>
+        <li>★ President, CS Student Society </li>
         <li>★ Director of Communications, CS Student Society </li>
         <li>★ Tutor, SFU and Self-employed</li>
       </ul>
@@ -58,9 +61,9 @@ const TAB_DATA = [
     id: "awards",
     content: (
       <ul>
-        <li>★ SFU Undergraduate Entrance Scholarship with Distinction</li>
-        <li>{"★ Dean's Honour Roll Fall 2023"}</li>
+        <li>{"★ Dean's Honour Roll Fall 2023 and Spring 2024"}</li>
         <li>★ Computing Science Student Society Undergraduate Award</li>
+        <li>★ SFU Undergraduate Entrance Scholarship with Distinction</li>
         <li>★ BC Excellence Award</li>
         <li>{"★ Govenor General's Bronze Academic Medal"}</li>
       </ul>
@@ -79,7 +82,7 @@ const About = () => {
   };
 
   return (
-    <section className="flex items-center justify-center text-align-center mt-12">
+    <section className="text-align-center mt-12">
       <div className="text-center">
         <h1 className="text-[#5d4d3d] mt-12 mb-4 lg:mb-6 text-3xl sm:text-5xl lg:text-5xl font-bold">About Me</h1>
         <p className="text-[#7c6752] text-base sm:text-lg mt-2 mb-6 lg:text-xl px-15">
@@ -92,24 +95,23 @@ const About = () => {
           which you can find here!
           <a href="https://www.youtube.com/channel/UC11O9tOQoa0FszZdmI4oAKw" target="_blank" rel="noopener noreferrer" className=" text-[#5d4d3d] font-bold hover:text-[#7c6752]"> @bellekwan</a>
         </p>
-        <br/>
-        <div className="flex justify-start mt-12">
-          <div className="flex flex-col rounded-lg border-2 border-[#5d4d3d] p-8 w-1/2">
-            <div className="flex flex-wrap mb-4">
-                <TabAbout selectTab={() => handleTabChange("skills")} active={tab==="skills"}> Skills </TabAbout>
-                <TabAbout selectTab={() => handleTabChange("education")} active={tab==="education"}> Education </TabAbout>
-                <TabAbout selectTab={() => handleTabChange("experience")} active={tab==="experience"}> Experience </TabAbout>
-                <TabAbout selectTab={() => handleTabChange("awards")} active={tab==="awards"}> Awards </TabAbout>
-            </div>
-            <div className="mt-8 text-[#5d4d3d] text-left">
-              {TAB_DATA.find((t)=> t.id === tab).content}
-            </div>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+        <div className="border-2 border-[#5d4d3d] p-8 rounded-lg">
+          <div className="flex flex-wrap mb-4">
+            <TabAbout selectTab={() => handleTabChange("skills")} active={tab === "skills"}> Skills </TabAbout>
+            <TabAbout selectTab={() => handleTabChange("education")} active={tab === "education"}> Education </TabAbout>
+            <TabAbout selectTab={() => handleTabChange("experience")} active={tab === "experience"}> Experience </TabAbout>
+            <TabAbout selectTab={() => handleTabChange("awards")} active={tab === "awards"}> Awards </TabAbout>
           </div>
-          <div className="ml-8 p-8 text-left w-1/2">
+          <div className="mt-8 text-[#5d4d3d] text-left">
+            {TAB_DATA.find((t) => t.id === tab).content}
+          </div>
+        </div>
+        <div className="p-8 text-left overflow-hidden">
           <h2 className="text-xl font-semibold text-[#5d4d3d] mb-4">My life!</h2>
-            <p className="text-[#7c6752]">
-              Insert Picture Book
-            </p>
+          <div className="overflow-hidden drop-shadow-lg">
+            <ImageSlider />
           </div>
         </div>
       </div>
