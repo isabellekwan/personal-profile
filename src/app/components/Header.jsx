@@ -1,5 +1,3 @@
-//rafce --> command to generate skeleton code
-
 "use client";
 import React from 'react';
 import Image from "next/image";
@@ -16,11 +14,13 @@ const Header = () => {
                         sequence={[
                             'Isabelle',
                             1000,
-                            'a 3nd Year CS Student',
+                            'a Computing Science Student',
                             1000,
                             'a Web Developer',
                             1000,
                             'a Graphic Designer',
+                            1000,
+                            'a Researcher',
                             1000,
                             'Inspired ☆',
                             1000,
@@ -34,15 +34,15 @@ const Header = () => {
                     Welcome to my portfolio!
                 </p>
                 <div>
-                    <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-[#7c6752] hover:bg-[#5d4d3d] text-white">
-                        Contact Me
+                    <button className="px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:ml-0 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white">
+                        My Linktree
                     </button>
-                    <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-[#7c6752] hover:bg-[#5d4d3d] text-white">
+                    <button className="px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:mr-0 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white">
                         Download CV
                     </button>
                 </div>
             </div>
-            <div className="col-span-5">
+            <div className="col-span-5 flex justify-center sm:justify-start mt-8 sm:mt-0">
                 <Image
                     src="/images/portrait.png"
                     alt="circle portrait"
@@ -55,4 +55,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;
