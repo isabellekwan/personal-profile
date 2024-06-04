@@ -11,7 +11,7 @@ const projectsData = [
         description: "Website that allows user’s to manage their medical needs discretely",
         imageUrl: "/images/projects/MUM-2.png",
         tag: ["All","Web"],
-        gitUrl: "/",
+        gitUrl: "https://github.com/isabellekwan/nw-hacks",
         previewUrl: "/",
     },
     {
@@ -20,7 +20,7 @@ const projectsData = [
         description: "Web application that allows users users to track their fitness journey at SFU",
         imageUrl: "/images/projects/SFUFit-1.png",
         tag: ["All","Web"],
-        gitUrl: "/",
+        gitUrl: "https://github.com/isabellekwan/SFU-Recreation-Fitness-Tracker",
         previewUrl: "/",     
     },
     {
@@ -29,7 +29,7 @@ const projectsData = [
         description: "Website that allows users to report villain sightings in their area!",
         imageUrl: "/images/projects/VillainMap-1.png",
         tag: ["All","Web"],
-        gitUrl: "/",
+        gitUrl: "https://github.com/isabellekwan/Villain-Map",
         previewUrl: "/", 
     },
     {
@@ -38,7 +38,7 @@ const projectsData = [
         description: "Full brand redeign for the mental health company, Wellin5",
         imageUrl: "/images/projects/Wellin5-1.png",
         tag: ["All","Design"],
-        gitUrl: "/",
+        gitUrl: "https://www.behance.net/gallery/200182463/Wellin5-Brand-Redesign",
         previewUrl: "/", 
     }
 ];

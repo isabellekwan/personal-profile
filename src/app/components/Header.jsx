@@ -34,12 +34,12 @@ const Header = () => {
                     Welcome to my portfolio!
                 </p>
                 <div>
-                    <button className="px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:ml-0 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white">
+                    <a href="https://linktr.ee/isabellekwan" className="block sm:inline-block px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:mr-4 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white text-center">
                         My Linktree
-                    </button>
-                    <button className="px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:mr-0 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white">
+                    </a>
+                    <a href="/path/to/your/pdf.pdf" download className="block sm:inline-block px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:mr-0 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white text-center">
                         Download CV
-                    </button>
+                    </a>
                 </div>
             </div>
             <div className="col-span-5 flex justify-center sm:justify-start mt-8 sm:mt-0">
