@@ -46,9 +46,9 @@ const Header = () => {
                 <Image
                     src="/images/portrait.png"
                     alt="circle portrait"
-                    width={300}
-                    height={300}
-                    className="sm:ml-8"
+                    width={330}
+                    height={330}
+                    className="sm:ml-12"
                 />
             </div>
         </div>
