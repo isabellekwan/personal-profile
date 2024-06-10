@@ -48,6 +48,7 @@ const Header = () => {
                     alt="circle portrait"
                     width={300}
                     height={300}
+                    className="sm:ml-8"
                 />
             </div>
         </div>
