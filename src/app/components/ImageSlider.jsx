@@ -4,13 +4,13 @@ import "keen-slider/keen-slider.min.css";
 import "../slides.css";
 import "../globals.css";
 
-const ImageSlider = () => {
+const ImageSlider = ({slideshowImages}) => {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [loaded, setLoaded] = useState(false)
     const [sliderRef, instanceRef] = useKeenSlider({
       initial: 0,
       slidesPerView: 1,
-      loop: true,
+      loop: false,
       slideChanged(slider) {
         setCurrentSlide(slider.track.details.rel)
       },
@@ -19,21 +19,51 @@ const ImageSlider = () => {
       },
     })
 
-  const goToNextSlide = () => {
-    if (slider && typeof slider.next === 'function') {
-      slider.next();
-    }
-  };
+    const goToNextSlide = () => {
+      if (slider && typeof slider.next === 'function') {
+        slider.next();
+      }
+    };
 
-  const slides = [
-    { src: '/images/slideshow/frosh.jpg' },
-    { src: '/images/slideshow/hackathon.jpg' },
-    { src: '/images/slideshow/siliconvalley.jpg' },
-    { src: '/images/slideshow/wics.jpg' },
-    { src: '/images/slideshow/tap.jpg' },
-    { src: '/images/slideshow/sfudance.jpg' },
-    { src: '/images/slideshow/hike.jpg' },
-  ];
+    let slides = [
+      { src: '/images/slideshow/frosh.jpg' },
+      { src: '/images/slideshow/hackathon.jpg' },
+      { src: '/images/slideshow/siliconvalley.jpg' },
+      { src: '/images/slideshow/wics.jpg' },
+      { src: '/images/slideshow/tap.jpg' },
+      { src: '/images/slideshow/sfudance.jpg' },
+      { src: '/images/slideshow/hike.jpg' },
+    ];
+
+    if (slideshowImages === "mum") {
+      slides = [
+        { src: '/images/projects/MUM-1.png' },
+        { src: '/images/projects/MUM-2.png' },
+      ]
+    } else if (slideshowImages === "sfu-fit") {
+      slides = [
+        { src: '/images/projects/SFUFit-1.png'},
+        { src: '/images/projects/SFUFit-2.png' },
+        { src: '/images/projects/SFUFit-3.png' },
+        { src: '/images/projects/SFUFit-4.png' },
+        { src: '/images/projects/SFUFit-5.png' },
+        { src: '/images/projects/SFUFit-6.png' },
+      ]
+    } else if (slideshowImages === "villain-report") {
+      slides = [
+        { src: '/images/projects/VillainMap-1.png'},
+        { src: '/images/projects/VillainMap-2.png' },
+        { src: '/images/projects/VillainMap-3.png' },
+        { src: '/images/projects/VillainMap-4.png' },
+      ]
+    } else if (slideshowImages === "wellin5") {
+      slides = [
+        { src: '/images/projects/Wellin5-1.png'},
+        { src: '/images/projects/Wellin5-2.png' },
+        { src: '/images/projects/Wellin5-3.png' },
+        { src: '/images/projects/Wellin5-4.png' },
+      ]
+    }
 
   return (
     <>

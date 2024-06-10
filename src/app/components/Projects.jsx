@@ -12,7 +12,7 @@ const projectsData = [
         imageUrl: "/images/projects/MUM-2.png",
         tag: ["All","Web"],
         gitUrl: "https://github.com/isabellekwan/nw-hacks",
-        previewUrl: "/",
+        slideshowImages: "mum",
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const projectsData = [
         imageUrl: "/images/projects/SFUFit-1.png",
         tag: ["All","Web"],
         gitUrl: "https://github.com/isabellekwan/SFU-Recreation-Fitness-Tracker",
-        previewUrl: "/",     
+        slideshowImages: "sfu-fit",     
     },
     {
         id: 3,
@@ -30,7 +30,7 @@ const projectsData = [
         imageUrl: "/images/projects/VillainMap-1.png",
         tag: ["All","Web"],
         gitUrl: "https://github.com/isabellekwan/Villain-Map",
-        previewUrl: "/", 
+        slideshowImages: "villain-report", 
     },
     {
         id: 4,
@@ -39,7 +39,7 @@ const projectsData = [
         imageUrl: "/images/projects/Wellin5-1.png",
         tag: ["All","Design"],
         gitUrl: "https://www.behance.net/gallery/200182463/Wellin5-Brand-Redesign",
-        previewUrl: "/", 
+        slideshowImages: "wellin5", 
     }
 ];
 
@@ -95,7 +95,7 @@ const Projects = () => {
                         description={project.description} 
                         imgUrl={project.imageUrl}
                         gitUrl={project.gitUrl}
-                        previewUrl={project.previewUrl}
+                        slideshowImages={project.slideshowImages}
                         />
                 </motion.li>
             ))}

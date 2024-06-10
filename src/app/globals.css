@@ -25,3 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+section {
+  padding-top: 4rem;
+}
+
+.section {
+  padding-top: 4rem;
+}

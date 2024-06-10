@@ -56,7 +56,7 @@ const EmailSection = () => {
   };
 
   return (
-    <Box maxW="container.xl" mt={12} px={4}>
+    <Box id="contact" className="section" maxW="container.xl" mt={12} px={4} pb={10}>
       <SimpleGrid 
         columns={[1, null, 2]} 
       >

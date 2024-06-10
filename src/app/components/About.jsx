@@ -82,7 +82,7 @@ const About = () => {
   };
 
   return (
-    <section className="text-align-center mt-12">
+    <section id="about" className="text-align-center mt-12">
       <div className="text-center">
         <h1 className="text-[#5d4d3d] mt-12 mb-4 lg:mb-6 text-3xl sm:text-5xl lg:text-5xl font-bold">About Me</h1>
         <p className="text-[#7c6752] text-base sm:text-lg mt-2 mb-6 lg:text-xl px-15">
@@ -96,6 +96,7 @@ const About = () => {
           <a href="https://www.youtube.com/channel/UC11O9tOQoa0FszZdmI4oAKw" target="_blank" rel="noopener noreferrer" className=" text-[#5d4d3d] font-bold hover:text-[#7c6752]"> @bellekwan</a>
         </p>
       </div>
+      <div className="section"></div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
         <div className="border-2 border-[#5d4d3d] p-8 rounded-lg">
           <div className="flex flex-wrap mb-4">
