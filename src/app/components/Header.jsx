@@ -30,7 +30,7 @@ const Header = () => {
                         repeat={Infinity}
                     />
                 </h1>
-                <p className="text-[#7c6752] text-base sm:text-lg mb-6 lg:text-xl">
+                <p className="text-[#7c6752] text-base sm:text-lg mb-10 lg:text-xl">
                     Welcome to my portfolio!
                 </p>
                 <div>
@@ -46,8 +46,8 @@ const Header = () => {
                 <Image
                     src="/images/portrait.png"
                     alt="circle portrait"
-                    width={330}
-                    height={330}
+                    width={315}
+                    height={315}
                     className="sm:ml-12"
                 />
             </div>
