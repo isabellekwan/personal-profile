@@ -47,8 +47,9 @@ const TAB_DATA = [
     id: "experience",
     content: (
       <ul>
-        <li>★ Undergraduate Research Assistant, Interactive Experiences Lab</li>
-        <li>★ Research Assistant Volunteer, GrUVI Lab </li>
+        <li>★ Software Engineering Intern, Interactive Experiences Lab</li>
+        <li>★ Research Intern, Interactive Experiences Lab</li>
+        <li>★ Undergraduate Researcg Assistant, GrUVI Lab </li>
         <li>★ Student Ambassador, SFU Faculty of Applied Sciences</li>
         <li>★ President, CS Student Society </li>
         <li>★ Director of Communications, CS Student Society </li>
@@ -61,6 +62,7 @@ const TAB_DATA = [
     id: "awards",
     content: (
       <ul>
+        <li>{"★ President's Honour Roll 2024"}</li>
         <li>{"★ Dean's Honour Roll Fall 2023 and Spring 2024"}</li>
         <li>★ Computing Science Student Society Undergraduate Award</li>
         <li>★ SFU Undergraduate Entrance Scholarship with Distinction</li>
@@ -87,7 +89,7 @@ const About = () => {
         <h1 className="text-[#5d4d3d] mt-12 mb-4 lg:mb-6 text-3xl sm:text-5xl lg:text-5xl font-bold">About Me</h1>
         <p className="text-[#7c6752] text-base sm:text-lg mt-2 mb-6 lg:text-xl px-15">
           Hi there! My name is Isabelle Kwan and I am a third year student pursuing a Bachelor of Science in Computing Science at Simon Fraser University! 
-          I am particularly interested in full-stack development, but I am always open to learning and exploring different topics in technology.
+          I am particularly interested in various human-computer interaction topics, but I am always open to learning and exploring different topics in technology.
           Currently, I have experience in web development, graphic design, and full-stack development! As well, I have experience in HCI and visual computing research!
           <br /><br />
           Aside from that, some personal interests of mine include dance, fashion, poetry, crochet, and video games
@@ -97,6 +99,9 @@ const About = () => {
         </p>
       </div>
       <div className="section"></div>
+      <div className="links">
+        
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
         <div className="border-2 border-[#5d4d3d] p-8 rounded-lg">
           <div className="flex flex-wrap mb-4">
