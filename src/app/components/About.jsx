@@ -9,26 +9,12 @@ const TAB_DATA = [
     id: "skills",
     content: (
       <ul>
-        <li><strong>Languages</strong></li>
+        <li><strong>Languages</strong>: Python, JavaScript, TypeScript, PHP, Haskell, Rust, Ruby, C, C++, HTML, CSS, x86</li>
         <br></br>
-        <ul class="pl-8">
-          <li>{"★ JavaScript"}</li>
-          <li>{"★ TypeScript"}</li>
-          <li>{"★ HTML/CSS"}</li>
-          <li>{"★ Python"}</li>
-          <li>{"★ C/C++"}</li>
-        </ul>
+        <li><strong>Frameworks and Libraries</strong>: Node.js, React.js, Next.js, Ruby on Rails, Angular, Bootstrap, Tailwind, Flask, PostgreSQL</li>
         <br></br>
-        <li><strong>Frameworks and Libraries</strong></li>
+        <li><strong>Tools</strong>: Git, Matlab, Microsoft Office, Docker, Figma, Jira</li>
         <br></br>
-        <ul class="pl-8">
-          <li>{"★ ReactJS"}</li>
-          <li>{"★ NextJS"}</li>
-          <li>{"★ AngularJS"}</li>
-          <li>{"★ Ruby on Rails"}</li>
-          <li>{"★ Bootstrap"}</li>
-          <li>{"★ Tailwind"}</li>
-        </ul>
       </ul>
     )
   },
@@ -37,7 +23,8 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul>
-        <li>★ B.Sc in Computing Science, Simon Fraser University</li>
+        <li>★ B.Sc in Computing Science, <strong>Simon Fraser University</strong></li>
+        <br></br>
         <li>{"★ High School Diploma, St. Patrick's Regional Secondary School"}</li>
       </ul>
     )
@@ -47,13 +34,14 @@ const TAB_DATA = [
     id: "experience",
     content: (
       <ul>
-        <li>★ Software Engineering Intern, Interactive Experiences Lab</li>
-        <li>★ Research Intern, Interactive Experiences Lab</li>
-        <li>★ Undergraduate Researcg Assistant, GrUVI Lab </li>
-        <li>★ Student Ambassador, SFU Faculty of Applied Sciences</li>
-        <li>★ President, CS Student Society </li>
-        <li>★ Director of Communications, CS Student Society </li>
-        <li>★ Tutor, SFU and Self-employed</li>
+        <li>★ Research Fellow, <i>University of Waterloo</i></li>
+        <li>★ Software Engineering Intern, <i>Excelar Technologies</i></li>
+        <li>★ Research Intern, <i>Interactive Experiences Lab</i></li>
+        <li>★ Undergraduate Research Assistant, <i>GrUVI Lab</i></li>
+        <li>★ Student Ambassador, <i>SFU Faculty of Applied Sciences</i></li>
+        <li>★ President, <i>SFU Computing Science Student Society (CSSS)</i></li>
+        <li>★ Director of Communications, <i>SFU CSSS</i> </li>
+        <li>★ Tutor, <i>SFU and Self-employed</i></li>
       </ul>
     )
   },
@@ -62,10 +50,12 @@ const TAB_DATA = [
     id: "awards",
     content: (
       <ul>
+        <li>{"★ Grace Hopper Scholar 2025"}</li>
+        <li>{"★ CIBC Women in Applied Sciences Award"}</li>
         <li>{"★ President's Honour Roll 2024"}</li>
-        <li>{"★ Dean's Honour Roll Fall 2023 and Spring 2024"}</li>
+        <li>{"★ Dean's Honour Roll Fall 2023 to Fall 2025"}</li>
         <li>★ Computing Science Student Society Undergraduate Award</li>
-        <li>★ SFU Undergraduate Entrance Scholarship with Distinction</li>
+        <li>★ SFU Undergraduate Entrance Scholarship (with Distinction)</li>
         <li>★ BC Excellence Award</li>
         <li>{"★ Govenor General's Bronze Academic Medal"}</li>
       </ul>
@@ -99,21 +89,22 @@ const About = () => {
         </p>
       </div>
       <div className="section"></div>
-      <div className="links">
-        
-      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-        <div className="border-2 border-[#5d4d3d] p-8 rounded-lg">
-          <div className="flex flex-wrap mb-4">
-            <TabAbout selectTab={() => handleTabChange("skills")} active={tab === "skills"}> Skills </TabAbout>
-            <TabAbout selectTab={() => handleTabChange("education")} active={tab === "education"}> Education </TabAbout>
-            <TabAbout selectTab={() => handleTabChange("experience")} active={tab === "experience"}> Experience </TabAbout>
-            <TabAbout selectTab={() => handleTabChange("awards")} active={tab === "awards"}> Awards </TabAbout>
-          </div>
-          <div className="mt-8 text-[#5d4d3d] text-left">
+        <div className="relative border-2 border-[#7c6752] bg-[#7c6752] p-6 rounded-lg h-[450px] my-auto flex flex-col justify-between">
+          <div className="absolute inset-3 border-2 border-[#e9e5e1] rounded-lg pointer-events-none"></div>
+          <div className="relative z-10">
+            <div className="flex flex-wrap mb-3">
+              <TabAbout selectTab={() => handleTabChange("skills")} active={tab === "skills"}>Skills</TabAbout>
+              <TabAbout selectTab={() => handleTabChange("education")} active={tab === "education"}>Education</TabAbout>
+              <TabAbout selectTab={() => handleTabChange("experience")} active={tab === "experience"}>Experience</TabAbout>
+              <TabAbout selectTab={() => handleTabChange("awards")} active={tab === "awards"}>Awards</TabAbout>
+            </div>
+          <div className="mt-4 text-[#e9e5e1] text-left overflow-y-auto">
             {TAB_DATA.find((t) => t.id === tab).content}
           </div>
         </div>
+      </div>
         <div className="p-8 text-left overflow-hidden">
           <h2 className="text-xl font-semibold text-[#5d4d3d] mb-4">My life!</h2>
           <div className="overflow-hidden drop-shadow-lg">

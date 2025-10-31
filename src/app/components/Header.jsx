@@ -16,9 +16,9 @@ const Header = () => {
                             1000,
                             'a Student',
                             1000,
-                            'a Web Developer',
+                            'a Developer',
                             1000,
-                            'a Graphic Designer',
+                            'a Designer',
                             1000,
                             'a Researcher',
                             1000,
@@ -37,8 +37,11 @@ const Header = () => {
                     <a href="https://linktr.ee/isabellekwan" className="block sm:inline-block px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:mr-4 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white text-center">
                         My Linktree
                     </a>
-                    <a href="/Isabelle_Kwan_CV__Research_.pdf" download className="block sm:inline-block px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:mr-0 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white text-center">
-                        Download CV
+                    <a href="/Isabelle_Kwan_CV__Fall_2025_.pdf" download className="block sm:inline-block px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:mr-4 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white text-center">
+                        SWE Resume
+                    </a>
+                    <a href="/Isabelle_Kwan_Research_CV__Fall_2025_.pdf" download className="block sm:inline-block px-6 py-3 w-full sm:w-fit mb-4 sm:mb-0 sm:mr-4 lg:mr-0 rounded-full bg-[#7c6752] hover:bg-[#5d4d3d] text-white text-center">
+                        Research CV
                     </a>
                 </div>
             </div>
