@@ -48,6 +48,18 @@ section.band{padding:44px 0;border-top:1px solid var(--line)}
 .card .when{font-size:13px;color:var(--mute)}
 a.card{text-decoration:none;transition:transform .2s}
 a.card:hover{transform:translateY(-3px)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.chip{font:inherit;font-size:14px;font-weight:500;padding:6px 16px;border-radius:99px;border:1.5px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--ink);color:var(--bg)}
+.pc{cursor:pointer}
+.pcover{aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--line);margin-bottom:6px}
+.pcover img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);overflow-y:auto;padding:4vh 16px}
+.mbox{position:relative;max-width:900px;margin:0 auto;background:var(--card);border-radius:24px;padding:28px}
+.mbox h2{margin:0 0 6px}.mbox p{color:var(--mute);margin:0 0 8px}
+.mclose{position:absolute;top:14px;right:16px;font-size:28px;line-height:1;background:none;border:0;color:var(--ink);cursor:pointer}
+.shots{display:grid;gap:14px;margin-top:18px}
+.shots img{width:100%;border-radius:12px;border:1px solid var(--line)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .tag{font-size:12px;font-weight:500;padding:2px 12px;border-radius:99px;color:#111}
 .t0{background:var(--y)}.t1{background:var(--p)}.t2{background:var(--m)}.t3{background:var(--b)}
@@ -70,7 +82,6 @@ footer{margin-top:40px;border-top:1px solid var(--line);background:var(--card)}
 .tray .ph{position:absolute;inset:auto 0 12px;text-align:center;font-size:13px;color:var(--mute)}
 .sticker{position:absolute;width:96px;cursor:grab;touch-action:none;user-select:none}
 .sticker img{width:100%;display:block;pointer-events:none}
-.slot{width:96px;height:96px;border:2px dashed var(--mute);border-radius:50%;display:grid;place-items:center;font-size:11px;text-align:center;color:var(--mute);background:var(--bg)}
 .links{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .btn.small{padding:6px 16px;font-size:13px;cursor:pointer;border:0;font-family:inherit}
@@ -82,14 +93,15 @@ footer{margin-top:40px;border-top:1px solid var(--line);background:var(--card)}
 <header><div class="bar">
 <a class="logo" href="#home" aria-label="Home"><span id="logoBlob"></span>Isabelle Kwan</a>
 <nav id="nav" aria-label="Main"></nav>
+<button class="btn small ghost" id="theme" aria-label="Toggle light or dark mode">Light / dark</button>
 </div></header>
 <main id="app"></main>
 <footer><div class="foot">
 <h3>Stickers</h3>
 <p class="hint" style="margin:4px 0 0">Drag these around. Add your own drawings with the button below (PNG with a transparent background works best).</p>
 <div class="tray" id="tray"><div class="ph">your drawings land here</div></div>
-<div class="row"><label class="btn small">Add a sticker<input id="file" type="file" accept="image/*" hidden></label><button class="btn small ghost" id="theme">Light / dark</button></div>
-<div class="links" style="margin-top:22px"><a href="mailto:isabelletlkwan@gmail.com">Email</a><a href="https://www.linkedin.com/in/isabelle-kwan">LinkedIn</a><a href="https://github.com/isabellekwan">GitHub</a><a href="https://scholar.google.ca/citations?user=GEelmSwAAAAJ&amp;hl=en&amp;oi=ao">Google Scholar</a><a href="https://www.youtube.com/">YouTube</a></div>
+<div class="row"><label class="btn small">Add a sticker<input id="file" type="file" accept="image/*" hidden></label></div>
+<div class="links" style="margin-top:22px"><a href="mailto:isabelletlkwan@gmail.com">Email</a><a href="https://www.linkedin.com/in/isabelle-kwan">LinkedIn</a><a href="https://github.com/isabellekwan">GitHub</a><a href="https://scholar.google.ca/citations?user=GEelmSwAAAAJ&amp;hl=en&amp;oi=ao">Google Scholar</a><a href="https://www.youtube.com/channel/UC11O9tOQoa0FszZdmI4oAKw">YouTube</a></div>
 <p class="hint">© 2026 Isabelle Kwan. Vancouver, B.C.</p>
 </div></footer>
 <script>
@@ -105,14 +117,16 @@ var RES=[
 {t:'Research Intern, SFU Interactive Experiences Lab',w:'May – Sep 2024',d:'Turned study habits into interactive Vega-Lite visualizations and managed four projects, from agendas to user studies.',tg:['JavaScript','React','Vega-Lite']}];
 var WORK=[
 {t:'Software Engineering Intern, Excelar Technologies',w:'Sep 2024 – Apr 2025',d:'Designed APIs that were 25% faster, reworked data models and schemas (20% faster queries), and refactored ETL pipelines for 15% better throughput.',tg:['Python','Node.js','PostgreSQL','Docker']}];
-var TECH=[
-{t:'Project name',d:'One line on what it does and why you built it.',tg:['React','Python'],u:'#tech'},
-{t:'Project name',d:'One line on what it does and why you built it.',tg:['Unity','C#'],u:'#tech'},
-{t:'Project name',d:'One line on what it does and why you built it.',tg:['Vega-Lite'],u:'#tech'}];
-var DESIGN=[
-{t:'Design project',d:'Describe the problem, your role and the outcome.',tg:['Figma','Research'],u:'#design'},
-{t:'Design project',d:'Describe the problem, your role and the outcome.',tg:['Branding'],u:'#design'},
-{t:'Design project',d:'Describe the problem, your role and the outcome.',tg:['Illustration'],u:'#design'}];
+/* Screenshots live in projects/<dir>/. S(dir,prefix,ids) builds file paths from the shared filename prefix. */
+function S(dir,prefix,ids){return ids.map(function(i){return encodeURI('projects/'+dir+'/'+prefix+i+'.png')})}
+/* tg = filter tags shown on the Projects page; the first three projects appear on the home page */
+var PROJECTS=[
+{t:'Jury Doody',d:'Multiplayer party game with a host screen and a join code. Rounds mix verdicts, outcome guessing and debates.',tg:['Full-stack','Web app'],imgs:S('tech/Jury Doody','Screenshot 2026-10-0',['3 154746','4 020232','4 020405','4 020412','4 113048','4 113101','4 113128','4 113154'])},
+{t:'Research Connect',d:'A place for students to discover research studies, and for researchers to recruit participants and keep sessions organized.',tg:['Full-stack','Web app','Design'],imgs:S('tech/Research Connect','Screenshot 2026-08-06 ',['190006','190027','190041','190050','190103','190123','190139','190155','190215','190228','190240','190258'])},
+{t:'Sticky Send',d:'Browser extension for picking and sending stickers, with your own uploads or generated ones.',tg:['Tech','Browser extension','Design'],imgs:S('tech/Sticky Send','Screenshot 2026-01-18 ',['094224','094247','112221','112400','113012'])},
+{t:'Amazon Gift Wrap',d:'Design concept for customizing gift wrapping: paper, occasion, ribbon colour and width, with a 3D preview.',tg:['Design','UI/UX'],imgs:S('design/Amazon Gift Wrap','Screenshot 2026-05-21 ',['202013','214013','221818'])},
+{t:'SFU FitTrack',d:'Fitness tracker for the SFU Recreation Centre with exercise suggestions and progress tracking.',tg:['Full-stack','Web app'],imgs:S('tech/SFU Fitness','Screenshot 2023-12-08 ',['093123','093143','093214','093229','093314','093328'])}];
+var PF='All';
 var SIDE=[
 {t:'CAN-CWIC West',w:'2024 – now',d:'Co-founder and host of a regional conference for women in computing.',tg:['Community']},
 {t:'SFU Senate',w:'2025 – now',d:'Student senator at Simon Fraser University.',tg:['Leadership']},
@@ -126,7 +140,7 @@ var VIDEOS=[ /* add img:'data:image/png;base64,...' for a real thumbnail */
 {t:'Video title four',u:'https://www.youtube.com/watch?v=YOUR_VIDEO_ID'}];
 /* ================================== */
 var C=['#FFE97A','#F9B5C1','#B7E1D1','#A9D3FF'];
-var PAGES=[['home','Home'],['research','Research'],['work','Work'],['tech','Tech'],['design','Design'],['sidequests','Side quests']];
+var PAGES=[['home','Home'],['research','Research'],['work','Work'],['projects','Projects'],['sidequests','Side quests']];
 function blob(c,eyes,rot){return '<svg viewBox="0 0 100 100" style="transform:rotate('+(rot||0)+'deg)" aria-hidden="true"><path d="M50 8C72 4 94 22 92 46C90 72 70 94 46 90C22 86 6 66 10 42C13 24 30 11 50 8Z" fill="'+c+'"/>'+(eyes?'<ellipse cx="40" cy="46" rx="4" ry="6" fill="#111"/><ellipse cx="60" cy="46" rx="4" ry="6" fill="#111"/>':'')+'</svg>'}
 function tags(a){return a&&a.length?'<div class="tags">'+a.map(function(x,i){return '<span class="tag t'+(i%4)+'">'+x+'</span>'}).join('')+'</div>':''}
 function card(x){var inner=(x.w?'<span class="when">'+x.w+'</span>':'')+'<h3>'+x.t+'</h3><p>'+x.d+'</p>'+tags(x.tg);
@@ -134,7 +148,7 @@ return x.u?'<a class="card" href="'+x.u+'"'+(x.u.charAt(0)=='#'?'':' target="_bl
 function band(title,items,page,n){return '<section class="band"><div class="head"><h2>'+title+'</h2><a class="more" href="#'+page+'">See all</a></div><div class="grid">'+items.slice(0,n||3).map(card).join('')+'</div></section>'}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function railHTML(){return VIDEOS.map(function(v,i){return '<a class="vid" href="'+esc(v.u)+'" target="_blank" rel="noopener"><div class="thumb" style="background:'+C[i%4]+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="">':'<span class="play"></span>')+'</div><h3>'+esc(v.t)+'</h3></a>'}).join('')}
-function videos(){return '<section class="band"><div class="head"><h2>Videos</h2><div class="arrows"><button aria-label="Previous" onclick="scr(-1)">←</button><button aria-label="Next" onclick="scr(1)">→</button></div></div><div class="rail" id="rail">'+railHTML()+'</div></section>'}
+function videos(){return '<section class="band"><div class="head"><h2>Videos</h2><a class="more" href="https://www.youtube.com/channel/'+YT_CHANNEL_ID+'" target="_blank" rel="noopener">Visit my YouTube channel →</a><div class="arrows"><button aria-label="Previous" onclick="scr(-1)">←</button><button aria-label="Next" onclick="scr(1)">→</button></div></div><div class="rail" id="rail">'+railHTML()+'</div></section>'}
 var videosLoaded=false;
 function loadVideos(){
 if(!YT_API_KEY||/^YOUR/.test(YT_API_KEY)||!/^UC/.test(YT_CHANNEL_ID))return;
@@ -146,16 +160,26 @@ fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResul
 VIDEOS=d.items.map(function(it){var s=it.snippet,id=s.resourceId.videoId,th=s.thumbnails||{};return {t:s.title,u:'https://www.youtube.com/watch?v='+id,img:(th.medium||th.high||th.default||{}).url||''}});
 videosLoaded=true;paint()})
 .catch(function(){})}
+function pcard(p,i,all){if(!all&&PF!='All'&&p.tg.indexOf(PF)<0)return '';
+return '<div class="card pc" role="button" tabindex="0" onclick="openProj('+i+')" onkeydown="if(event.key==\'Enter\')openProj('+i+')"><div class="pcover">'+(p.imgs[0]?'<img src="'+p.imgs[0]+'" alt="" loading="lazy">':'')+'</div><h3>'+p.t+'</h3><p>'+p.d+'</p>'+tags(p.tg)+'</div>'}
+function pband(){return '<section class="band"><div class="head"><h2>Projects</h2><a class="more" href="#projects">See all</a></div><div class="grid">'+PROJECTS.slice(0,3).map(function(p,i){return pcard(p,i,1)}).join('')+'</div></section>'}
+function setPF(t){PF=t;document.getElementById('app').innerHTML=VIEW.projects()}
+function openProj(i){var p=PROJECTS[i],m=document.createElement('div');m.className='modal';m.setAttribute('role','dialog');m.setAttribute('aria-label',p.t);
+m.innerHTML='<div class="mbox"><button class="mclose" aria-label="Close">×</button><h2>'+p.t+'</h2><p>'+p.d+'</p>'+tags(p.tg)+'<div class="shots">'+p.imgs.map(function(s){return '<img src="'+s+'" alt="'+esc(p.t)+' screenshot" loading="lazy">'}).join('')+'</div></div>';
+function close(){m.remove();document.removeEventListener('keydown',key)}
+function key(e){if(e.key=='Escape')close()}
+m.addEventListener('click',function(e){if(e.target==m||e.target.className=='mclose')close()});
+document.addEventListener('keydown',key);document.body.appendChild(m)}
 function scr(d){var r=document.getElementById('rail');r.scrollBy({left:d*320,behavior:'smooth'})}
 function title(t,p){return '<div class="page-title"><h1>'+t+'</h1><p>'+p+'</p></div>'}
 var VIEW={
-home:function(){return '<section class="hero"><div><h1>Hi, I’m Isabelle. I like making data and ideas easier to touch.</h1><p class="lead">Undergraduate computing science student at SFU with a specialization in human-computer interaction: visualization, sensemaking, and interactive systems. Currently doing research, building things and organizing community events. WEBSITE UNDER MAINTENANCE.</p><div class="row"><a class="btn" href="#research">See my research <i>→</i></a><a class="btn ghost" href="Isabelle_Kwan_CV__Graduate_School_.pdf" target="_blank" rel="noopener">View CV</a></div></div><div class="stage" id="stage"></div></section>'
+home:function(){return '<section class="hero"><div><h1>Hi, I’m Isabelle. I like making data and ideas easier to understand.</h1><p class="lead">Undergraduate computing science student at SFU with a specialization in human-computer interaction: visualization, sensemaking, and design. Currently doing research, building things and organizing community events. WEBSITE UNDER MAINTENANCE.</p><div class="row"><a class="btn" href="#research">See my research <i>→</i></a><a class="btn ghost" href="Isabelle_Kwan_CV__Graduate_School_.pdf" target="_blank" rel="noopener">View CV</a></div></div><div class="stage" id="stage"></div></section>'
 +'<p class="hint" style="margin-top:-20px">Tip: the blobs are draggable. </p>'
-+band('Publications',PUBS,'research')+band('Research experience',RES,'research')+band('Professional experience',WORK,'work',1)+band('Tech projects',TECH,'tech')+band('Design projects',DESIGN,'design')+band('Side quests',SIDE,'sidequests')+videos()},
++band('Publications',PUBS,'research')+band('Research experience',RES,'research')+band('Professional experience',WORK,'work',1)+pband()+band('Side quests',SIDE,'sidequests')+videos()},
 research:function(){return title('Research','Papers and lab work in HCI, AR and visualization.')+'<h2 style="margin:16px 0">Publications</h2><div class="grid">'+PUBS.map(function(p){return card({t:p.t,d:p.d,w:p.w,tg:p.tg,u:p.u})}).join('')+'</div><h2 style="margin:40px 0 16px">Research experience</h2><div class="grid">'+RES.map(card).join('')+'</div>'},
 work:function(){return title('Work','Where I’ve built software professionally.')+'<div class="grid">'+WORK.map(card).join('')+'</div>'},
-tech:function(){return title('Tech projects','Things I’ve built. Replace these placeholders with your own.')+'<div class="grid">'+TECH.map(card).join('')+'</div>'},
-design:function(){return title('Design projects','Case studies and visual work. Replace these placeholders with your own.')+'<div class="grid">'+DESIGN.map(card).join('')+'</div>'},
+projects:function(){var all=[];PROJECTS.forEach(function(p){p.tg.forEach(function(t){if(all.indexOf(t)<0)all.push(t)})});
+return title('Projects','Things I’ve built and designed. Click a project to see project images.')+'<div class="filters" role="group" aria-label="Filter projects">'+['All'].concat(all).map(function(t){return '<button class="chip'+(t==PF?' on':'')+'" onclick="setPF(this.textContent)">'+esc(t)+'</button>'}).join('')+'</div><div class="grid">'+PROJECTS.map(function(p,i){return pcard(p,i)}).filter(Boolean).join('')+'</div>'},
 sidequests:function(){return title('Side quests','Community, leadership and everything in between.')+'<div class="grid">'+SIDE.map(card).join('')+'</div>'+videos()+'<section class="band"><h2>Recognition</h2><div class="grid" style="margin-top:16px">'+[['CRA Outstanding Undergraduate Researchers nominee','2026'],['EA Dick Asher Award','2026'],['Grace Hopper Conference Scholar','2025'],['BC Excellence Award','2022']].map(function(a){return card({t:a[0],w:a[1],d:''})}).join('')+'</div></section>'}
 };
 function drag(el,box){var sx,sy,ox,oy;el.addEventListener('pointerdown',function(e){el.setPointerCapture(e.pointerId);sx=e.clientX;sy=e.clientY;ox=el.offsetLeft;oy=el.offsetTop;el.style.zIndex=5;
@@ -170,7 +194,6 @@ document.getElementById('app').innerHTML=VIEW[h]();document.title=(h=='home'?'':
 function sticker(html,x,y){var t=document.getElementById('tray'),d=document.createElement('div');d.className='sticker';d.style.left=x+'px';d.style.top=y+'px';d.innerHTML=html;t.appendChild(d);drag(d,t)}
 document.getElementById('logoBlob').innerHTML=blob(C[0],1);
 [[0,20],[1,130],[2,240]].forEach(function(a,i){sticker(blob(C[i],1,i*30),a[1],30)});
-sticker('<div class="slot">drop your<br>drawing</div>',380,60);
 document.getElementById('file').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){sticker('<img alt="" src="'+r.result+'">',40+Math.random()*300,60+Math.random()*60)};r.readAsDataURL(f);e.target.value=''});
 document.getElementById('theme').addEventListener('click',function(){var r=document.documentElement,d=r.getAttribute('data-theme')=='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);r.setAttribute('data-theme',d?'light':'dark')});
 window.addEventListener('hashchange',route);route();
