@@ -118,6 +118,7 @@ var SIDE=[
 {t:'SFU Senate',w:'2025 – now',d:'Student senator at Simon Fraser University.',tg:['Leadership']},
 {t:'SFU Women in Computing Science',w:'2026 – now',d:'Director of Graduate Events.',tg:['Community']}];
 var YT_CHANNEL_ID='UC11O9tOQoa0FszZdmI4oAKw'; /* starts with UC..., find it at youtube.com/account_advanced */
+var YT_API_KEY='AIzaSyDh_LwO2tMv9y2BKPvVs1NybbmByE5ylws'; /* restricted to https://isabellekwan.ca/* and YouTube Data API v3 only */
 var VIDEOS=[ /* add img:'data:image/png;base64,...' for a real thumbnail */
 {t:'Video title one',u:'https://www.youtube.com/watch?v=YOUR_VIDEO_ID'},
 {t:'Video title two',u:'https://www.youtube.com/watch?v=YOUR_VIDEO_ID'},
@@ -136,13 +137,13 @@ function railHTML(){return VIDEOS.map(function(v,i){return '<a class="vid" href=
 function videos(){return '<section class="band"><div class="head"><h2>Videos</h2><div class="arrows"><button aria-label="Previous" onclick="scr(-1)">←</button><button aria-label="Next" onclick="scr(1)">→</button></div></div><div class="rail" id="rail">'+railHTML()+'</div></section>'}
 var videosLoaded=false;
 function loadVideos(){
-if(!YT_CHANNEL_ID||/^YOUR/.test(YT_CHANNEL_ID))return;
+if(!YT_API_KEY||/^YOUR/.test(YT_API_KEY)||!/^UC/.test(YT_CHANNEL_ID))return;
 function paint(){var r=document.getElementById('rail');if(r)r.innerHTML=railHTML()}
 if(videosLoaded){paint();return}
-fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id='+YT_CHANNEL_ID))
+fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=4&playlistId=UU'+YT_CHANNEL_ID.slice(2)+'&key='+encodeURIComponent(YT_API_KEY))
 .then(function(r){return r.json()})
 .then(function(d){if(!d.items||!d.items.length)return;
-VIDEOS=d.items.slice(0,4).map(function(it){var m=/[?&]v=([^&]+)/.exec(it.link||'');return {t:it.title,u:it.link,img:m?'https://i.ytimg.com/vi/'+m[1]+'/hqdefault.jpg':''}});
+VIDEOS=d.items.map(function(it){var s=it.snippet,id=s.resourceId.videoId,th=s.thumbnails||{};return {t:s.title,u:'https://www.youtube.com/watch?v='+id,img:(th.high||th.medium||th.default||{}).url||''}});
 videosLoaded=true;paint()})
 .catch(function(){})}
 function scr(d){var r=document.getElementById('rail');r.scrollBy({left:d*320,behavior:'smooth'})}
