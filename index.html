@@ -53,13 +53,13 @@ a.card:hover{transform:translateY(-3px)}
 .chip.on{background:var(--ink);color:var(--bg)}
 .pc{cursor:pointer}
 .pcover{aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--line);margin-bottom:6px}
-.pcover img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.pcover img,.pcover video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);overflow-y:auto;padding:4vh 16px}
 .mbox{position:relative;max-width:900px;margin:0 auto;background:var(--card);border-radius:24px;padding:28px}
 .mbox h2{margin:0 0 6px}.mbox p{color:var(--mute);margin:0 0 8px}
 .mclose{position:absolute;top:14px;right:16px;font-size:28px;line-height:1;background:none;border:0;color:var(--ink);cursor:pointer}
 .shots{display:grid;gap:14px;margin-top:18px}
-.shots img{width:100%;border-radius:12px;border:1px solid var(--line)}
+.shots img,.shots video{width:100%;border-radius:12px;border:1px solid var(--line)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .tag{font-size:12px;font-weight:500;padding:2px 12px;border-radius:99px;color:#111}
 .t0{background:var(--y)}.t1{background:var(--p)}.t2{background:var(--m)}.t3{background:var(--b)}
@@ -123,6 +123,7 @@ function S(dir,prefix,ids){return ids.map(function(i){return encodeURI('projects
 var PROJECTS=[
 {t:'Jury Doody',d:'Multiplayer party game with a host screen and a join code. Rounds mix verdicts, outcome guessing and debates.',tg:['Full-stack','Web app'],imgs:S('tech/Jury Doody','Screenshot 2026-10-0',['3 154746','4 020232','4 020405','4 020412','4 113048','4 113101','4 113128','4 113154'])},
 {t:'Research Connect',d:'A place for students to discover research studies, and for researchers to recruit participants and keep sessions organized.',tg:['Full-stack','Web app','Design'],imgs:S('tech/Research Connect','Screenshot 2026-08-06 ',['190006','190027','190041','190050','190103','190123','190139','190155','190215','190228','190240','190258'])},
+{t:'PhotoSynthesis',d:'Plant care mobile app for beginners. Brief demonstration video included.',tg:['Design','UI/UX'],imgs:[],thumb:'projects/design/PhotoSynthesis/photosynthesis_thumbnail.png',video:encodeURI('projects/design/PhotoSynthesis/Screen Recording 2026-04-03 190959.mp4')},
 {t:'Sticky Send',d:'Browser extension for picking and sending stickers, with your own uploads or generated ones.',tg:['Tech','Browser extension','Design'],imgs:S('tech/Sticky Send','Screenshot 2026-01-18 ',['094224','094247','112221','112400','113012'])},
 {t:'Amazon Gift Wrap',d:'Design concept for customizing gift wrapping: paper, occasion, ribbon colour and width, with a 3D preview.',tg:['Design','UI/UX'],imgs:S('design/Amazon Gift Wrap','Screenshot 2026-05-21 ',['202013','214013','221818'])},
 {t:'SFU FitTrack',d:'Fitness tracker for the SFU Recreation Centre with exercise suggestions and progress tracking.',tg:['Full-stack','Web app'],imgs:S('tech/SFU Fitness','Screenshot 2023-12-08 ',['093123','093143','093214','093229','093314','093328'])}];
@@ -161,11 +162,11 @@ VIDEOS=d.items.map(function(it){var s=it.snippet,id=s.resourceId.videoId,th=s.th
 videosLoaded=true;paint()})
 .catch(function(){})}
 function pcard(p,i,all){if(!all&&PF!='All'&&p.tg.indexOf(PF)<0)return '';
-return '<div class="card pc" role="button" tabindex="0" onclick="openProj('+i+')" onkeydown="if(event.key==\'Enter\')openProj('+i+')"><div class="pcover">'+(p.imgs[0]?'<img src="'+p.imgs[0]+'" alt="" loading="lazy">':'')+'</div><h3>'+p.t+'</h3><p>'+p.d+'</p>'+tags(p.tg)+'</div>'}
+return '<div class="card pc" role="button" tabindex="0" onclick="openProj('+i+')" onkeydown="if(event.key==\'Enter\')openProj('+i+')"><div class="pcover">'+(p.thumb||p.imgs[0]?'<img src="'+(p.thumb||p.imgs[0])+'" alt="" loading="lazy">':p.video?'<video src="'+p.video+'#t=0.5" preload="metadata" muted playsinline></video>':'')+'</div><h3>'+p.t+'</h3><p>'+p.d+'</p>'+tags(p.tg)+'</div>'}
 function pband(){return '<section class="band"><div class="head"><h2>Projects</h2><a class="more" href="#projects">See all</a></div><div class="grid">'+PROJECTS.slice(0,3).map(function(p,i){return pcard(p,i,1)}).join('')+'</div></section>'}
 function setPF(t){PF=t;document.getElementById('app').innerHTML=VIEW.projects()}
 function openProj(i){var p=PROJECTS[i],m=document.createElement('div');m.className='modal';m.setAttribute('role','dialog');m.setAttribute('aria-label',p.t);
-m.innerHTML='<div class="mbox"><button class="mclose" aria-label="Close">×</button><h2>'+p.t+'</h2><p>'+p.d+'</p>'+tags(p.tg)+'<div class="shots">'+p.imgs.map(function(s){return '<img src="'+s+'" alt="'+esc(p.t)+' screenshot" loading="lazy">'}).join('')+'</div></div>';
+m.innerHTML='<div class="mbox"><button class="mclose" aria-label="Close">×</button><h2>'+p.t+'</h2><p>'+p.d+'</p>'+tags(p.tg)+'<div class="shots">'+(p.video?'<video src="'+p.video+'" controls preload="metadata" playsinline></video>':'')+p.imgs.map(function(s){return '<img src="'+s+'" alt="'+esc(p.t)+' screenshot" loading="lazy">'}).join('')+'</div></div>';
 function close(){m.remove();document.removeEventListener('keydown',key)}
 function key(e){if(e.key=='Escape')close()}
 m.addEventListener('click',function(e){if(e.target==m||e.target.className=='mclose')close()});
