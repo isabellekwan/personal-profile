@@ -46,6 +46,8 @@ section.band{padding:44px 0;border-top:1px solid var(--line)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:8px}
 .card p{margin:0;color:var(--mute);font-size:14.5px}
 .card .when{font-size:13px;color:var(--mute)}
+.card .authors{color:var(--mute);font-size:13.5px}
+.card .authors b{color:var(--ink)}
 a.card{text-decoration:none;transition:transform .2s}
 a.card:hover{transform:translateY(-3px)}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
@@ -108,9 +110,9 @@ footer{margin-top:40px;border-top:1px solid var(--line);background:var(--card)}
 /* ===== EDIT YOUR CONTENT HERE ===== */
 var T=function(a){return a};
 var PUBS=[
-{t:'The Choreography of Augmented Reality Timelines',d:'Relative position, chronology and situatedness of event sequences.',w:'Graphics Interface 2026',u:'https://doi.org/10.1145/3831423.3831457',tg:['AR','Visualization']},
-{t:'Understanding AI Literacy for Creatives',d:'Tensions between structured tutorials and self-experimentation.',w:'Creativity & Cognition 2026',u:'https://doi.org/10.1145/3803784.3807570',tg:['HCI','AI']},
-{t:'MILESTONES',d:'Design and field evaluation of a semi-automated tool that supports self-directed learning for online learners.',w:'CHI 2025',u:'https://doi.org/10.1145/3706598.3714295',tg:['HCI','Learning']}];
+{t:'The Choreography of Augmented Reality Timelines',a:'<b>Isabelle Kwan</b>, Jessica Chen, Matthew Brehmer',d:'Relative position, chronology and situatedness of event sequences.',w:'Graphics Interface 2026',u:'https://doi.org/10.1145/3831423.3831457',tg:['AR','Visualization']},
+{t:'Understanding AI Literacy for Creatives',a:'Haidan Liu, <b>Isabelle Kwan</b>, Taiga Okuma, Jeffrey Loverock, Nicholas Vincent, Parmit K. Chilana',d:'Tensions between structured tutorials and self-experimentation.',w:'Creativity & Cognition 2026',u:'https://doi.org/10.1145/3803784.3807570',tg:['HCI','AI']},
+{t:'MILESTONES',a:'Rimika Chaudhury, Courtenay Huffman, <b>Isabelle Kwan</b>, Gurnoor S. Deol, Supreet Dhillon, Parmit K. Chilana',d:'Design and field evaluation of a semi-automated tool that supports self-directed learning for online learners.',w:'CHI 2025',u:'https://doi.org/10.1145/3706598.3714295',tg:['HCI','Learning']}];
 var RES=[
 {t:'Research Assistant, SFU PADComp',w:'Sep 2026 – now',d:'Interactive visualizations for a large-scale simulation of collective action and data migration across platforms. User studies for PaperMuncher, an LLM tool that converts papers between disciplinary forms.',tg:['Python','Vega-Lite','DuckDB','Mosaic']},
 {t:'Research Intern, UW HCI Lab',w:'Sep – Dec 2025',d:'Built a tablet AR app in Unity for 3D spatial interaction and data exploration, then ran user studies on 3D timelines.',tg:['C#','ARCore','Unity']},
@@ -144,7 +146,7 @@ var C=['#FFE97A','#F9B5C1','#B7E1D1','#A9D3FF'];
 var PAGES=[['home','Home'],['research','Research'],['work','Work'],['projects','Projects'],['sidequests','Side quests']];
 function blob(c,eyes,rot){return '<svg viewBox="0 0 100 100" style="transform:rotate('+(rot||0)+'deg)" aria-hidden="true"><path d="M50 8C72 4 94 22 92 46C90 72 70 94 46 90C22 86 6 66 10 42C13 24 30 11 50 8Z" fill="'+c+'"/>'+(eyes?'<ellipse cx="40" cy="46" rx="4" ry="6" fill="#111"/><ellipse cx="60" cy="46" rx="4" ry="6" fill="#111"/>':'')+'</svg>'}
 function tags(a){return a&&a.length?'<div class="tags">'+a.map(function(x,i){return '<span class="tag t'+(i%4)+'">'+x+'</span>'}).join('')+'</div>':''}
-function card(x){var inner=(x.w?'<span class="when">'+x.w+'</span>':'')+'<h3>'+x.t+'</h3><p>'+x.d+'</p>'+tags(x.tg);
+function card(x){var inner=(x.w?'<span class="when">'+x.w+'</span>':'')+'<h3>'+x.t+'</h3>'+(x.a?'<p class="authors">'+x.a+'</p>':'')+'<p>'+x.d+'</p>'+tags(x.tg);
 return x.u?'<a class="card" href="'+x.u+'"'+(x.u.charAt(0)=='#'?'':' target="_blank" rel="noopener"')+'>'+inner+'</a>':'<div class="card">'+inner+'</div>'}
 function band(title,items,page,n){return '<section class="band"><div class="head"><h2>'+title+'</h2><a class="more" href="#'+page+'">See all</a></div><div class="grid">'+items.slice(0,n||3).map(card).join('')+'</div></section>'}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -177,7 +179,7 @@ var VIEW={
 home:function(){return '<section class="hero"><div><h1>Hi, I’m Isabelle. I like making data and ideas easier to understand.</h1><p class="lead">Undergraduate computing science student at SFU with a specialization in human-computer interaction: visualization, sensemaking, and design. Currently doing research, building things and organizing community events. WEBSITE UNDER MAINTENANCE.</p><div class="row"><a class="btn" href="#research">See my research <i>→</i></a><a class="btn ghost" href="Isabelle_Kwan_CV__Graduate_School_.pdf" target="_blank" rel="noopener">View CV</a></div></div><div class="stage" id="stage"></div></section>'
 +'<p class="hint" style="margin-top:-20px">Tip: the blobs are draggable. </p>'
 +band('Publications',PUBS,'research')+band('Research experience',RES,'research')+band('Professional experience',WORK,'work',1)+pband()+band('Side quests',SIDE,'sidequests')+videos()},
-research:function(){return title('Research','Papers and lab work in HCI, AR and visualization.')+'<h2 style="margin:16px 0">Publications</h2><div class="grid">'+PUBS.map(function(p){return card({t:p.t,d:p.d,w:p.w,tg:p.tg,u:p.u})}).join('')+'</div><h2 style="margin:40px 0 16px">Research experience</h2><div class="grid">'+RES.map(card).join('')+'</div>'},
+research:function(){return title('Research','Papers and lab work in HCI, AR and visualization.')+'<h2 style="margin:16px 0">Publications</h2><div class="grid">'+PUBS.map(function(p){return card({t:p.t,a:p.a,d:p.d,w:p.w,tg:p.tg,u:p.u})}).join('')+'</div><h2 style="margin:40px 0 16px">Research experience</h2><div class="grid">'+RES.map(card).join('')+'</div>'},
 work:function(){return title('Work','Where I’ve built software professionally.')+'<div class="grid">'+WORK.map(card).join('')+'</div>'},
 projects:function(){var all=[];PROJECTS.forEach(function(p){p.tg.forEach(function(t){if(all.indexOf(t)<0)all.push(t)})});
 return title('Projects','Things I’ve built and designed. Click a project to see project images.')+'<div class="filters" role="group" aria-label="Filter projects">'+['All'].concat(all).map(function(t){return '<button class="chip'+(t==PF?' on':'')+'" onclick="setPF(this.textContent)">'+esc(t)+'</button>'}).join('')+'</div><div class="grid">'+PROJECTS.map(function(p,i){return pcard(p,i)}).filter(Boolean).join('')+'</div>'},
