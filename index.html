@@ -62,6 +62,7 @@ a.card:hover{transform:translateY(-3px)}
 .mclose{position:absolute;top:14px;right:16px;font-size:28px;line-height:1;background:none;border:0;color:var(--ink);cursor:pointer}
 .shots{display:grid;gap:14px;margin-top:18px}
 .shots img,.shots video{width:100%;border-radius:12px;border:1px solid var(--line)}
+.shots video{max-height:60vh;object-fit:contain;justify-self:center;background:#000}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .tag{font-size:12px;font-weight:500;padding:2px 12px;border-radius:99px;color:#111}
 .t0{background:var(--y)}.t1{background:var(--p)}.t2{background:var(--m)}.t3{background:var(--b)}
@@ -125,7 +126,7 @@ function S(dir,prefix,ids){return ids.map(function(i){return encodeURI('projects
 var PROJECTS=[
 {t:'Jury Doody',d:'Multiplayer party game with a host screen and a join code. Rounds mix verdicts, outcome guessing and debates.',tg:['Full-stack','Web app'],imgs:S('tech/Jury Doody','Screenshot 2026-10-0',['3 154746','4 020232','4 020405','4 020412','4 113048','4 113101','4 113128','4 113154'])},
 {t:'Research Connect',d:'A place for students to discover research studies, and for researchers to recruit participants and keep sessions organized.',tg:['Full-stack','Web app','Design'],imgs:S('tech/Research Connect','Screenshot 2026-08-06 ',['190006','190027','190041','190050','190103','190123','190139','190155','190215','190228','190240','190258'])},
-{t:'PhotoSynthesis',d:'Plant care mobile app for beginners. Brief demonstration video included.',tg:['Design','UI/UX'],imgs:[],thumb:'projects/design/PhotoSynthesis/photosynthesis_thumbnail.png',video:encodeURI('projects/design/PhotoSynthesis/Screen Recording 2026-04-03 190959.mp4')},
+{t:'PhotoSynthesis',d:'Plant care mobile app for beginners. Brief demonstration video included.',tg:['Design','UI/UX'],imgs:[],thumb:'projects/design/PhotoSynthesis/photosynthesis_thumbnail.png',video:encodeURI('projects/design/PhotoSynthesis/Video Project 5.mp4')},
 {t:'Sticky Send',d:'Browser extension for picking and sending stickers, with your own uploads or generated ones.',tg:['Tech','Browser extension','Design'],imgs:S('tech/Sticky Send','Screenshot 2026-01-18 ',['094224','094247','112221','112400','113012'])},
 {t:'Amazon Gift Wrap',d:'Design concept for customizing gift wrapping: paper, occasion, ribbon colour and width, with a 3D preview.',tg:['Design','UI/UX'],imgs:S('design/Amazon Gift Wrap','Screenshot 2026-05-21 ',['202013','214013','221818'])},
 {t:'SFU FitTrack',d:'Fitness tracker for the SFU Recreation Centre with exercise suggestions and progress tracking.',tg:['Full-stack','Web app'],imgs:S('tech/SFU Fitness','Screenshot 2023-12-08 ',['093123','093143','093214','093229','093314','093328'])}];
@@ -176,7 +177,7 @@ document.addEventListener('keydown',key);document.body.appendChild(m)}
 function scr(d){var r=document.getElementById('rail');r.scrollBy({left:d*320,behavior:'smooth'})}
 function title(t,p){return '<div class="page-title"><h1>'+t+'</h1><p>'+p+'</p></div>'}
 var VIEW={
-home:function(){return '<section class="hero"><div><h1>Hi, I’m Isabelle. I like making data and ideas easier to understand.</h1><p class="lead">Undergraduate computing science student at SFU with a specialization in human-computer interaction: visualization, sensemaking, and design. Currently doing research, building things and organizing community events. WEBSITE UNDER MAINTENANCE.</p><div class="row"><a class="btn" href="#research">See my research <i>→</i></a><a class="btn ghost" href="Isabelle_Kwan_CV__Graduate_School_.pdf" target="_blank" rel="noopener">View CV</a></div></div><div class="stage" id="stage"></div></section>'
+home:function(){return '<section class="hero"><div><h1>Hi, I’m Isabelle. I like making data and ideas easier to understand.</h1><p class="lead">Undergraduate computing science student at SFU with a specialization in human-computer interaction: visualization, sensemaking, and design. Currently doing research, building things and organizing community events.</p><div class="row"><a class="btn" href="#research">See my research <i>→</i></a><a class="btn ghost" href="Isabelle_Kwan_CV__Graduate_School_.pdf" target="_blank" rel="noopener">View CV</a></div></div><div class="stage" id="stage"></div></section>'
 +'<p class="hint" style="margin-top:-20px">Tip: the blobs are draggable. </p>'
 +band('Publications',PUBS,'research')+band('Research experience',RES,'research')+band('Professional experience',WORK,'work',1)+pband()+band('Side quests',SIDE,'sidequests')+videos()},
 research:function(){return title('Research','Papers and lab work in HCI, AR and visualization.')+'<h2 style="margin:16px 0">Publications</h2><div class="grid">'+PUBS.map(function(p){return card({t:p.t,a:p.a,d:p.d,w:p.w,tg:p.tg,u:p.u})}).join('')+'</div><h2 style="margin:40px 0 16px">Research experience</h2><div class="grid">'+RES.map(card).join('')+'</div>'},
