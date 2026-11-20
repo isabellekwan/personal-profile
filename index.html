@@ -56,10 +56,20 @@ a.card:hover{transform:translateY(-3px)}
 .pc{cursor:pointer}
 .pcover{aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--line);margin-bottom:6px}
 .pcover img,.pcover video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);overflow-y:auto;padding:4vh 16px}
-.mbox{position:relative;max-width:900px;margin:0 auto;background:var(--card);border-radius:24px;padding:28px}
-.mbox h2{margin:0 0 6px}.mbox p{color:var(--mute);margin:0 0 8px}
-.mclose{position:absolute;top:14px;right:16px;font-size:28px;line-height:1;background:none;border:0;color:var(--ink);cursor:pointer}
+.modal{width:calc(100% - 32px);max-width:900px;max-height:92vh;max-height:92dvh;overflow-y:auto;border:1px solid var(--line);border-radius:24px;padding:0;background:var(--card);color:var(--ink)}
+.modal::backdrop{background:rgba(0,0,0,.6)}
+.mbox{position:relative;padding:clamp(22px,5vw,48px)}
+.mbox h2{font-size:clamp(30px,5vw,46px);margin:0 48px 10px 0}
+.mbox p{color:var(--mute);margin:0}
+.mclose{position:absolute;top:18px;right:20px;width:40px;height:40px;font-size:28px;line-height:1;background:none;border:1px solid var(--line);border-radius:50%;color:var(--ink);cursor:pointer}
+.case-kicker{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.case-intro{font-size:clamp(17px,2.4vw,20px);max-width:60ch}
+.case-content{margin-top:32px;max-width:70ch}
+.case-section{padding:24px 0;border-top:1px solid var(--line)}
+.case-section h3{font-size:21px;margin:0 0 10px}
+.case-section p+p{margin-top:12px}
+.case-gallery{border-top:1px solid var(--line);padding-top:24px}
+.case-gallery h3{font-size:21px;margin-bottom:6px}
 .shots{display:grid;gap:14px;margin-top:18px}
 .shots img,.shots video{width:100%;border-radius:12px;border:1px solid var(--line)}
 .shots video{max-height:60vh;object-fit:contain;justify-self:center;background:#000}
@@ -130,6 +140,51 @@ var PROJECTS=[
 {t:'Sticky Send',d:'Browser extension for picking and sending stickers, with your own uploads or generated ones.',tg:['Tech','Browser extension','Design'],imgs:S('tech/Sticky Send','Screenshot 2026-01-18 ',['094224','094247','112221','112400','113012'])},
 {t:'Amazon Gift Wrap',d:'Design concept for customizing gift wrapping: paper, occasion, ribbon colour and width, with a 3D preview.',tg:['Design','UI/UX'],imgs:S('design/Amazon Gift Wrap','Screenshot 2026-05-21 ',['202013','214013','221818'])},
 {t:'SFU FitTrack',d:'Fitness tracker for the SFU Recreation Centre with exercise suggestions and progress tracking.',tg:['Full-stack','Web app'],imgs:S('tech/SFU Fitness','Screenshot 2023-12-08 ',['093123','093143','093214','093229','093314','093328'])}];
+/* Case studies describe the work shown here; open questions are not presented as tested outcomes. */
+var CASES=[
+{intro:'A party game built around the wonderfully messy question: who was actually in the wrong?',
+sections:[
+['The opportunity','Reading a dramatic story is fun on your own; arguing about it with friends is even better. The challenge was to turn that familiar moment into a shared game without making everyone learn a complicated set of rules before they could join in.'],
+['From a room to a round','The host screen starts with a large room code and QR code, giving the group a common place to gather while players join on their phones. The lobby also brings rounds, game mode and timers together, so the host can shape the session before everyone begins.','During play, the shared display carries the group through each phase while the phone becomes a personal place to make a choice. Verdicts, guessing the real outcome and debate turn a story into several different kinds of participation. A final scoreboard and a return to the lobby give the session a clear ending and a way to play again.'],
+['The design tension','A multiplayer experience has to make sense in two places at once: the room needs a shared sense of what is happening, but each player needs to know what to do on their own screen. Round labels, timers and visible participation counts help make that state legible without taking attention away from the conversation.','The lobby also includes a guide to unfamiliar Reddit terminology and a content setting. Both acknowledge that players can arrive with different levels of context and comfort.'],
+['What I would explore next','I would want to watch groups join, switch between screens and move through a full round: where do people hesitate, and does a timer create energy or pressure? I would also look closely at how the game handles late arrivals, disconnections and content that a group would rather skip.']
+]},
+{intro:'Connecting people who want to participate in research with the researchers organizing it.',
+sections:[
+['The opportunity','Research participation involves more than finding a study. A student needs enough information to decide whether it fits; a researcher needs to communicate expectations, review applicants and keep sessions organized. The design brings those two perspectives into one place rather than treating recruitment as a single sign-up button.'],
+['Walking through the experience','A participant can browse studies, search by title or description, and narrow the list by category or remote versus in-person participation. Each listing surfaces details such as location and compensation alongside an eligibility action, helping someone assess an opportunity before committing more time.','The participant dashboard pairs discovery with a calendar and study statuses, so the journey does not end at application. On the other side, researchers can create a study with a description, category and compensation, then review applicants and their screening status.'],
+['The design tension','The same system has to be useful to two audiences without blurring their different jobs. Participants need clarity about what happens next; researchers need enough structure to manage incoming applications. Status labels and distinct participant and researcher views make that handoff more understandable.','Trust is as important as convenience here. Eligibility, compensation and application decisions affect real people, so the interface needs to make expectations visible rather than asking users to infer them.'],
+['What I would explore next','I would test the full journey with both participants and researchers, especially the moments between applying, approval and booking. I would also examine how clearly the experience explains eligibility, rejection, privacy and changes to a session.']
+]},
+{intro:'A friendly mobile gardening experience for people who are still figuring out their green thumb.',
+sections:[
+['The opportunity','Starting to care for plants can feel surprisingly uncertain: what does this plant need, and how much am I expected to know already? PhotoSynthesis approaches that uncertainty as an onboarding problem as much as a plant-care problem. The aim is to make the first interaction feel welcoming rather than like a test.'],
+['Walking through the experience','The concept opens with a simple welcome and account creation, then asks people how they describe themselves as gardeners. The options range from novice to expert and include “unsure” — a small but important acknowledgement that not everyone has a tidy label for their experience.','A plant character, soft colours and illustrated growth stages give the flow a more encouraging tone. The video below shows the experience in motion, which is especially useful for understanding how one screen leads into the next.'],
+['The design tension','Personalization can help make advice feel relevant, but too many questions up front can make getting started feel like work. This flow uses a single, approachable experience-level question as an entry point. The “unsure” option leaves room for people who may not yet know what kind of help they need.','The visual personality is meant to make the experience feel less intimidating; it still has to support legible labels, clear choices and an obvious next step.'],
+['What I would explore next','I would explore whether new growers understand what happens after onboarding and whether their chosen experience level leads to useful guidance. It would also be worth checking readability and accessibility across devices, and whether people can change their answer as their confidence grows.']
+]},
+{intro:'A browser extension that brings the personality of a sticker into everyday browsing.',
+sections:[
+['The opportunity','A sticker can communicate a mood in an instant. Sticky Send takes that playful visual language into the browser, where it can sit alongside the pages and conversations people are already using instead of requiring a separate creative workflow.'],
+['Walking through the experience','The extension gives people a way to choose and send stickers, and to add something more personal. The add-sticker flow offers two routes: describe an image to generate one, or upload an existing image instead. That choice matters because not everyone wants to start from a prompt, and some people already have an illustration they love.','The screenshots show stickers appearing over a page, making the result feel like an interaction with the browsing surface rather than just another image in a library.'],
+['The design tension','The playful part should be immediate, but an overlay still needs to coexist with the page underneath. A sticker should add expression without making important content impossible to read or controls difficult to reach. The friendly, scrapbook-like visual treatment sets the tone, while a prominent close control gives the creation flow an exit.','Generation also introduces uncertainty: a description may not produce what someone imagined. Uploading provides a different path to the same goal without requiring a perfect prompt.'],
+['What I would explore next','I would look at how people discover sending and managing stickers, and what happens when a generated result is not quite right. Consent, dismissal, keyboard access and the effect of overlays on different websites would be important areas to investigate before calling the experience complete.']
+]},
+{intro:'A gift-wrapping concept that makes an online purchase feel a little more personal.',
+sections:[
+['The opportunity','Choosing a gift is personal, but online checkout can make the final presentation feel abstract. The question behind this concept is how to let someone make thoughtful wrapping choices when they cannot hold the finished package in their hands.'],
+['Walking through the experience','The flow breaks customization into manageable decisions: select wrapping paper, choose a ribbon colour and width, and see the gift in a 3D preview. The numbered groups make the available choices easy to scan, while the preview gives those choices a visual context. A next-gift action keeps the flow moving when there is more than one item.','The card screen then shifts from appearance to the message itself: choose a card, write a salutation and message, and add a sign-off before finishing checkout. That sequence connects the physical presentation with the words the recipient will see.'],
+['The design tension','Customization should feel expressive, not like a long series of configuration tasks. Grouping a few related choices and keeping the preview close to the controls helps connect an action to its intended result. At the same time, a 3D view is only a representation: the experience should not imply more certainty about the finished wrap than the preview can provide.','The card also has a character limit, making the constraint visible while someone writes rather than leaving it to the end.'],
+['What I would explore next','I would test whether people notice changes in the preview, understand which gift they are editing, and feel confident about the final result before checkout. A useful next step would be a clear review of all gifts, messages and any costs, as well as an accessible alternative to relying on colour or 3D alone.']
+]},
+{intro:'Helping people find exercises and keep track of their own fitness goals.',
+sections:[
+['The opportunity','A visit to the gym can begin with a deceptively difficult question: what should I actually do? SFU FitTrack brings exercise discovery and personal tracking together in the context of the SFU Recreation Centre, so a person can move from exploring options to keeping track of their own activity.'],
+['Walking through the experience','The exercise catalogue presents movements as cards with their category, target muscles and equipment. A muscle search gives people a way to narrow the list based on what they want to work on. Those details make it easier to compare exercises before choosing one.','The account view brings personal activity back into the picture, with goals and liked exercises visible together. Saving an exercise creates a bridge between browsing something interesting and returning to it later.'],
+['The design tension','A catalogue needs enough detail to be useful without overwhelming someone who is new to exercise. Showing the target muscles and equipment on each card supports quick comparison, but those labels alone do not tell someone whether a movement is appropriate or how to perform it safely.','Tracking adds another consideration: progress is personal. A useful account experience should help someone understand their own goals without assuming that everyone measures success in the same way.'],
+['What I would explore next','I would explore how beginners choose an exercise, whether they can find clear guidance on form and modifications, and how they interpret their progress over time. Accessibility, privacy and ways to support different abilities would be important considerations for further development.']
+]}
+];
 var PF='All';
 var SIDE=[
 {t:'CAN-CWIC West',w:'2024 – now',d:'Co-founder and host of a regional conference for women in computing.',tg:['Community']},
@@ -165,15 +220,15 @@ VIDEOS=d.items.map(function(it){var s=it.snippet,id=s.resourceId.videoId,th=s.th
 videosLoaded=true;paint()})
 .catch(function(){})}
 function pcard(p,i,all){if(!all&&PF!='All'&&p.tg.indexOf(PF)<0)return '';
-return '<div class="card pc" role="button" tabindex="0" onclick="openProj('+i+')" onkeydown="if(event.key==\'Enter\')openProj('+i+')"><div class="pcover">'+(p.thumb||p.imgs[0]?'<img src="'+(p.thumb||p.imgs[0])+'" alt="" loading="lazy">':p.video?'<video src="'+p.video+'#t=0.5" preload="metadata" muted playsinline></video>':'')+'</div><h3>'+p.t+'</h3><p>'+p.d+'</p>'+tags(p.tg)+'</div>'}
+return '<div class="card pc" role="button" tabindex="0" aria-label="Read the '+esc(p.t)+' case study" onclick="openProj('+i+')" onkeydown="if(event.key==\'Enter\'||event.key==\' \'){event.preventDefault();openProj('+i+')}"><div class="pcover">'+(p.thumb||p.imgs[0]?'<img src="'+(p.thumb||p.imgs[0])+'" alt="" loading="lazy">':p.video?'<video src="'+p.video+'#t=0.5" preload="metadata" muted playsinline></video>':'')+'</div><h3>'+p.t+'</h3><p>'+p.d+'</p>'+tags(p.tg)+'<span class="more">Read case study →</span></div>'}
 function pband(){return '<section class="band"><div class="head"><h2>Projects</h2><a class="more" href="#projects">See all</a></div><div class="grid">'+PROJECTS.slice(0,3).map(function(p,i){return pcard(p,i,1)}).join('')+'</div></section>'}
 function setPF(t){PF=t;document.getElementById('app').innerHTML=VIEW.projects()}
-function openProj(i){var p=PROJECTS[i],m=document.createElement('div');m.className='modal';m.setAttribute('role','dialog');m.setAttribute('aria-label',p.t);
-m.innerHTML='<div class="mbox"><button class="mclose" aria-label="Close">×</button><h2>'+p.t+'</h2><p>'+p.d+'</p>'+tags(p.tg)+'<div class="shots">'+(p.video?'<video src="'+p.video+'" controls preload="metadata" playsinline></video>':'')+p.imgs.map(function(s){return '<img src="'+s+'" alt="'+esc(p.t)+' screenshot" loading="lazy">'}).join('')+'</div></div>';
-function close(){m.remove();document.removeEventListener('keydown',key)}
-function key(e){if(e.key=='Escape')close()}
-m.addEventListener('click',function(e){if(e.target==m||e.target.className=='mclose')close()});
-document.addEventListener('keydown',key);document.body.appendChild(m)}
+function openProj(i){var p=PROJECTS[i],c=CASES[i],trigger=document.activeElement,m=document.createElement('dialog');m.className='modal';m.setAttribute('aria-labelledby','case-title');
+m.innerHTML='<div class="mbox"><button class="mclose" aria-label="Close case study" autofocus>×</button><div class="case-kicker">Project case study</div><h2 id="case-title">'+esc(p.t)+'</h2><p class="case-intro">'+esc(c.intro)+'</p>'+tags(p.tg)+'<div class="case-content">'+c.sections.map(function(s){return '<section class="case-section"><h3>'+esc(s[0])+'</h3>'+s.slice(1).map(function(text){return '<p>'+esc(text)+'</p>'}).join('')+'</section>'}).join('')+'</div><section class="case-gallery"><h3>Project visuals</h3><p>'+(p.video?'Watch the demonstration below.':'A closer look at the screens described above.')+'</p><div class="shots">'+(p.video?'<video src="'+p.video+'" controls preload="metadata" playsinline aria-label="'+esc(p.t)+' demonstration video"></video>':'')+p.imgs.map(function(s,n){return '<img src="'+s+'" alt="'+esc(p.t)+' project screenshot '+(n+1)+'" loading="lazy">'}).join('')+'</div></section></div>';
+m.querySelector('.mclose').addEventListener('click',function(){m.close()});
+m.addEventListener('keydown',function(e){if(e.key=='Escape'){e.preventDefault();m.close()}});
+m.addEventListener('close',function(){m.remove();if(trigger&&trigger.isConnected)trigger.focus()});
+document.body.appendChild(m);m.showModal()}
 function scr(d){var r=document.getElementById('rail');r.scrollBy({left:d*320,behavior:'smooth'})}
 function title(t,p){return '<div class="page-title"><h1>'+t+'</h1><p>'+p+'</p></div>'}
 var VIEW={
@@ -183,7 +238,7 @@ home:function(){return '<section class="hero"><div><h1>Hi, I’m Isabelle. I lik
 research:function(){return title('Research','Papers and lab work in HCI, AR and visualization.')+'<h2 style="margin:16px 0">Publications</h2><div class="grid">'+PUBS.map(function(p){return card({t:p.t,a:p.a,d:p.d,w:p.w,tg:p.tg,u:p.u})}).join('')+'</div><h2 style="margin:40px 0 16px">Research experience</h2><div class="grid">'+RES.map(card).join('')+'</div>'},
 work:function(){return title('Work','Where I’ve built software professionally.')+'<div class="grid">'+WORK.map(card).join('')+'</div>'},
 projects:function(){var all=[];PROJECTS.forEach(function(p){p.tg.forEach(function(t){if(all.indexOf(t)<0)all.push(t)})});
-return title('Projects','Things I’ve built and designed. Click a project to see project images.')+'<div class="filters" role="group" aria-label="Filter projects">'+['All'].concat(all).map(function(t){return '<button class="chip'+(t==PF?' on':'')+'" onclick="setPF(this.textContent)">'+esc(t)+'</button>'}).join('')+'</div><div class="grid">'+PROJECTS.map(function(p,i){return pcard(p,i)}).filter(Boolean).join('')+'</div>'},
+return title('Projects','Things I’ve built and designed, with a closer look at the ideas and decisions behind each one.')+'<div class="filters" role="group" aria-label="Filter projects">'+['All'].concat(all).map(function(t){return '<button class="chip'+(t==PF?' on':'')+'" onclick="setPF(this.textContent)">'+esc(t)+'</button>'}).join('')+'</div><div class="grid">'+PROJECTS.map(function(p,i){return pcard(p,i)}).filter(Boolean).join('')+'</div>'},
 sidequests:function(){return title('Side quests','Community, leadership and everything in between.')+'<div class="grid">'+SIDE.map(card).join('')+'</div>'+videos()+'<section class="band"><h2>Recognition</h2><div class="grid" style="margin-top:16px">'+[['CRA Outstanding Undergraduate Researchers nominee','2026'],['EA Dick Asher Award','2026'],['Grace Hopper Conference Scholar','2025'],['BC Excellence Award','2022']].map(function(a){return card({t:a[0],w:a[1],d:''})}).join('')+'</div></section>'}
 };
 function drag(el,box){var sx,sy,ox,oy;el.addEventListener('pointerdown',function(e){el.setPointerCapture(e.pointerId);sx=e.clientX;sy=e.clientY;ox=el.offsetLeft;oy=el.offsetTop;el.style.zIndex=5;
