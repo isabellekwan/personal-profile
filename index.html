@@ -249,7 +249,7 @@ el.addEventListener('pointermove',mv);el.addEventListener('pointerup',up)})}
 function stage(){var s=document.getElementById('stage');if(!s)return;
 [[0,150,10,20,0],[1,110,170,60,1],[2,90,50,250,0],[3,70,230,230,1]].forEach(function(b){var d=document.createElement('div');d.className='blob';d.style.cssText='width:'+b[1]+'px;height:'+b[1]+'px;left:'+b[2]+'px;top:'+b[3]+'px';d.innerHTML=blob(C[b[0]],b[4],b[0]*25);s.appendChild(d);drag(d,s)})}
 function route(){var h=(location.hash||'#home').slice(1);if(!VIEW[h])h='home';
-document.getElementById('nav').innerHTML=PAGES.map(function(p){return '<a href="#'+p[0]+'"'+(p[0]==h?' aria-current="page"':'')+'>'+p[1]+'</a>'}).join('');
+document.getElementById('nav').innerHTML=PAGES.map(function(p){return '<a href="#'+p[0]+'"'+(p[0]==h?' aria-current="page"':'')+'>'+p[1]+'</a>'}).join('')+'<a href="Isabelle_Kwan_CV__Graduate_School.pdf" target="_blank" rel="noopener">CV</a>';
 document.getElementById('app').innerHTML=VIEW[h]();document.title=(h=='home'?'':PAGES.filter(function(p){return p[0]==h})[0][1]+' · ')+'Isabelle Kwan';window.scrollTo(0,0);stage();loadVideos()}
 function sticker(html,x,y){var t=document.getElementById('tray'),d=document.createElement('div');d.className='sticker';d.style.left=x+'px';d.style.top=y+'px';d.innerHTML=html;t.appendChild(d);drag(d,t)}
 document.getElementById('logoBlob').innerHTML=blob(C[0],1);
