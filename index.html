@@ -78,6 +78,18 @@ a.card:hover{transform:translateY(-3px)}
 .tag{font-size:12px;font-weight:500;padding:2px 12px;border-radius:99px;color:#111}
 .t0{background:var(--y)}.t1{background:var(--p)}.t2{background:var(--m)}.t3{background:var(--b)}
 .list .card{margin-bottom:16px}
+.community-intro{max-width:65ch;color:var(--mute);margin:8px 0 24px}
+.community-group+.community-group{margin-top:32px}
+.community-group>h3{margin:0 0 14px;font-size:18px}
+.community-org{font-weight:700;color:var(--ink)!important}
+.creative-group+.creative-group{margin-top:30px}
+.creative-group>h3{font-size:20px;margin-bottom:12px}
+.creative-photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.creative-photos figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.creative-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--line)}
+.creative-photos img[src="side-quests/flower-crochet.jpg"]{object-position:center top}
+.creative-photos img[src="side-quests/hanging-flower-crochet.jpg"],.creative-photos img[src="side-quests/plant-crochet.jpg"]{object-position:center 75%}
+.creative-photos figcaption{padding:10px 14px;color:var(--mute);font-size:14px}
 .page-title{padding:48px 0 12px}
 .page-title p{color:var(--mute);max-width:52ch;margin:8px 0 0}
 .about{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -188,9 +200,47 @@ sections:[
 ];
 var PF='All';
 var SIDE=[
-{t:'CAN-CWIC West',w:'2024 – now',d:'Co-founder and host of a regional conference for women in computing.',tg:['Community']},
-{t:'SFU Senate',w:'2025 – now',d:'Student senator at Simon Fraser University.',tg:['Leadership']},
-{t:'SFU Women in Computing Science',w:'2026 – now',d:'Director of Graduate Events.',tg:['Community']}];
+{t:'Co-founder & organizer',org:'CAN-CWiC West',w:'May 2024 – now',group:'community',d:'Organizing a regional conference celebrating women in technology, from logistics and sponsorships to student research showcases. The conference has welcomed over 150 participants.'},
+{t:'Student senator',org:'Simon Fraser University',w:'2025 – now',group:'community',d:'Serving as a student senator at Simon Fraser University.'},
+{t:'Director of graduate events',org:'SFU Women in Computing Science',w:'Jul 2026 – now',group:'community',d:'Planning social and academic events for graduate students and helping graduate and undergraduate members connect.'},
+{t:'President',org:'Computing Science Student Society',w:'May 2024 – Apr 2025',group:'community',d:'Led a team of 15, organized a student trip to Silicon Valley and helped lead FROSH Week, with nine events and more than 300 participants.'},
+{t:'Mentor',org:'SFU Women in Computing Science',w:'Sep 2023 – now',group:'mentoring',d:'Supporting first-year women in computing science through technical and social meet-ups, and volunteering at recruitment events.'},
+{t:'Calculus seminar lead',org:'SFU Faculties of Applied Science and Science',w:'Sep – Dec 2023',group:'mentoring',d:'Led small-group calculus seminars, supported collaborative problem-solving and shared study resources.'},
+{t:'Computing science peer tutor',org:'SFU Faculty of Applied Science',w:'May – Sep 2023',group:'mentoring',d:'Supported undergraduate students in discrete mathematics, Python and C/C++ with examples and practice questions.'}];
+var AWARDS=[
+{t:'CRA Outstanding Undergraduate Researchers Nominee',w:'2026',d:'One of four nominees from Simon Fraser University.'},
+{t:'EA Dick Asher Award in the Faculty of Applied Sciences',w:'2026',d:'Recognized for academic achievement and work experience.'},
+{t:'Improving Award for Women in Computing Science',w:'2026',d:'Recognized for academic standing and community service.'},
+{t:'Undergraduate Research Fellowship, University of Waterloo',w:'2025',d:'Selected on research merit to work with Dr. Matthew Brehmer.'},
+{t:'Grace Hopper Conference Scholar',w:'2025',d:'Recognized for academic standing and community service.'},
+{t:'CIBC Undergraduate Award for Women in the Faculty of Applied Sciences',w:'2025',d:'Recognized for engagement and impact in technology-focused communities and student organizations.'},
+{t:'NSERC Undergraduate Research Award',w:'2024',d:'A national award supporting undergraduate research.'},
+{t:'Computing Science Undergraduate Student Society Award',w:'2023',d:'Recognized for contributions through student society, Women in Computing Science and peer tutoring activities.'},
+{t:'SFU Major Entrance Scholarship with Distinction',w:'2022',d:'Recognized for academics, community service and achievements.'},
+{t:'BC Excellence Award',w:'2022',d:'A provincial award recognizing service, leadership and commitment to a chosen career path.'},
+{t:'Governor General’s Bronze Academic Medal',w:'2022',d:'Recognized for academic achievement upon graduating from secondary school.'},
+{t:'Dean’s and President’s Honour Rolls',d:'Recognized for academic achievement at Simon Fraser University.'}];
+/* Add photos as {src:'side-quests/filename.jpg',alt:'Description',caption:'Caption'} in the appropriate list. */
+var CREATIVE=[
+{t:'Dance',photos:[
+{src:'side-quests/dance-solo.jpg',alt:'A solo dancer performing onstage beside a band',caption:'A favorite tap performance'},
+{src:'side-quests/tap-artistry.jpg',alt:'A group of dancers standing together onstage',caption:'My tap company.'},
+{src:'side-quests/tap-residency.jpg',alt:'A group of dancers standing together in a studio',caption:'Max Pollak\'s residency'},
+{src:'side-quests/hip-hop-class.jpg',alt:'A group taking a mirror photo in a dance studio',caption:'Hip-hop class with friends'},
+{src:'side-quests/sfu-dance-team.jpeg',alt:'A dance team posing together with white pom-poms',caption:'SFU\'s dance team'},
+{src:'side-quests/white-caps-cheer.jpg',alt:'Cheerleaders with red and white pom-poms on a stadium field',caption:'Cheering for the Whitecaps'}]},
+{t:'Baking',photos:[
+{src:'side-quests/bear-cupcakes.jpg',alt:'Cupcakes topped with white frosting and bear-shaped cookies',caption:'Bear cupcakes'},
+{src:'side-quests/frog-cupcakes.jpg',alt:'Cupcakes decorated with green frog faces',caption:'Frog cupcakes'},
+{src:'side-quests/frog-cake.jpg',alt:'A cake with pale green frosting and a small frog decoration',caption:'Frog cake'},
+{src:'side-quests/heart-cake.jpg',alt:'A cake with a pink frosting heart and pastel decorations',caption:'Heart cake'}]},
+{t:'Crochet',photos:[
+{src:'side-quests/cow-crochet.jpg',alt:'A crocheted black and white cow',caption:'A crochet cow'},
+{src:'side-quests/flower-crochet.jpg',alt:'A bouquet of crocheted white and purple flowers',caption:'Purple bouquet'},
+{src:'side-quests/hanging-flower-crochet.jpg',alt:'Crocheted flowers hanging from a car mirror',caption:'Hanging flowers'},
+{src:'side-quests/hat-crochet.jpg',alt:'A pink crocheted hat with pointed ears',caption:'A handmade hat'},
+{src:'side-quests/plant-crochet.jpg',alt:'A crocheted hanging plant against a blue sky',caption:'A hanging plant'}]},
+{t:'Art',photos:[]}];
 var YT_CHANNEL_ID='UC11O9tOQoa0FszZdmI4oAKw'; /* starts with UC..., find it at youtube.com/account_advanced */
 var YT_API_KEY='AIzaSyDh_LwO2tMv9y2BKPvVs1NybbmByE5ylws'; /* restricted to https://isabellekwan.ca/* and YouTube Data API v3 only */
 var VIDEOS=[ /* add img:'data:image/png;base64,...' for a real thumbnail */
@@ -205,8 +255,10 @@ function blob(c,eyes,rot){return '<svg viewBox="0 0 100 100" style="transform:ro
 function tags(a){return a&&a.length?'<div class="tags">'+a.map(function(x,i){return '<span class="tag t'+(i%4)+'">'+x+'</span>'}).join('')+'</div>':''}
 function card(x){var inner=(x.w?'<span class="when">'+x.w+'</span>':'')+'<h3>'+x.t+'</h3>'+(x.a?'<p class="authors">'+x.a+'</p>':'')+'<p>'+x.d+'</p>'+tags(x.tg);
 return x.u?'<a class="card" href="'+x.u+'"'+(x.u.charAt(0)=='#'?'':' target="_blank" rel="noopener"')+'>'+inner+'</a>':'<div class="card">'+inner+'</div>'}
-function band(title,items,page,n){return '<section class="band"><div class="head"><h2>'+title+'</h2><a class="more" href="#'+page+'">See all</a></div><div class="grid">'+items.slice(0,n||3).map(card).join('')+'</div></section>'}
+function band(title,items,page,n,render){return '<section class="band"><div class="head"><h2>'+title+'</h2><a class="more" href="#'+page+'">See all</a></div><div class="grid">'+items.slice(0,n||3).map(render||card).join('')+'</div></section>'}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function communityCard(x){return '<div class="card"><span class="when">'+esc(x.w)+'</span><h3>'+esc(x.t)+'</h3><p class="community-org">'+esc(x.org)+'</p><p>'+esc(x.d)+'</p></div>'}
+function creativeGroup(x){return '<div class="creative-group"><h3>'+esc(x.t)+'</h3><div class="creative-photos">'+x.photos.map(function(photo){return '<figure><img src="'+esc(encodeURI(photo.src))+'" alt="'+esc(photo.alt)+'" loading="lazy"><figcaption>'+esc(photo.caption)+'</figcaption></figure>'}).join('')+'</div></div>'}
 function railHTML(){return VIDEOS.map(function(v,i){return '<a class="vid" href="'+esc(v.u)+'" target="_blank" rel="noopener"><div class="thumb" style="background:'+C[i%4]+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="">':'<span class="play"></span>')+'</div><h3>'+esc(v.t)+'</h3></a>'}).join('')}
 function videos(){return '<section class="band"><div class="head"><h2>Videos</h2><a class="more" href="https://www.youtube.com/channel/'+YT_CHANNEL_ID+'" target="_blank" rel="noopener">Visit my YouTube channel →</a><div class="arrows"><button aria-label="Previous" onclick="scr(-1)">←</button><button aria-label="Next" onclick="scr(1)">→</button></div></div><div class="rail" id="rail">'+railHTML()+'</div></section>'}
 var videosLoaded=false;
@@ -235,12 +287,12 @@ function title(t,p){return '<div class="page-title"><h1>'+t+'</h1><p>'+p+'</p></
 var VIEW={
 home:function(){return '<section class="hero"><div><h1>Hi, I’m Isabelle. I like making data and ideas easier to understand.</h1><p class="lead">I&#39;m an undergraduate computing science student at SFU with a specialization in human-computer interaction: visualization, sensemaking, and design. Currently doing research, building things and organizing community events.</p><div class="row"><a class="btn" href="#research">See my research <i>→</i></a><a class="btn ghost" href="Isabelle_Kwan_CV__Graduate_School.pdf" target="_blank" rel="noopener">View CV</a></div></div><div class="stage" id="stage"></div></section>'
 +'<p class="hint" style="margin-top:-20px">Tip: the blobs are draggable. </p>'
-+band('Publications',PUBS,'research')+band('Research experience',RES,'research')+band('Professional experience',WORK,'work',1)+pband()+band('Side quests',SIDE,'sidequests')+videos()},
++band('Publications',PUBS,'research')+band('Research experience',RES,'research')+band('Professional experience',WORK,'work',1)+pband()+band('Side quests',SIDE,'sidequests',3,communityCard)+videos()},
 research:function(){return title('Research','Papers and lab work in HCI, AR and visualization.')+'<h2 style="margin:16px 0">Publications</h2><div class="grid">'+PUBS.map(function(p){return card({t:p.t,a:p.a,d:p.d,w:p.w,tg:p.tg,u:p.u})}).join('')+'</div><h2 style="margin:40px 0 16px">Research experience</h2><div class="grid">'+RES.map(card).join('')+'</div>'},
 work:function(){return title('Work','Where I’ve built software professionally.')+'<div class="grid">'+WORK.map(card).join('')+'</div>'},
 projects:function(){var all=[];PROJECTS.forEach(function(p){p.tg.forEach(function(t){if(all.indexOf(t)<0)all.push(t)})});
 return title('Projects','Things I’ve built and designed, with a closer look at the ideas and decisions behind each one.')+'<div class="filters" role="group" aria-label="Filter projects">'+['All'].concat(all).map(function(t){return '<button class="chip'+(t==PF?' on':'')+'" onclick="setPF(this.textContent)">'+esc(t)+'</button>'}).join('')+'</div><div class="grid">'+PROJECTS.map(function(p,i){return pcard(p,i)}).filter(Boolean).join('')+'</div>'},
-sidequests:function(){return title('Side quests','Community, leadership and everything in between.')+'<div class="grid">'+SIDE.map(card).join('')+'</div>'+videos()+'<section class="band"><h2>Recognition</h2><div class="grid" style="margin-top:16px">'+[['CRA Outstanding Undergraduate Researchers nominee','2026'],['EA Dick Asher Award','2026'],['Grace Hopper Conference Scholar','2025'],['BC Excellence Award','2022']].map(function(a){return card({t:a[0],w:a[1],d:''})}).join('')+'</div></section>'}
+sidequests:function(){return title('Side quests','Community, creativity and everything in between.')+'<section><h2>Community, leadership &amp; mentoring</h2><p class="community-intro">I enjoy bringing people together and helping others find their place in computing, whether that means organizing events, mentoring students or supporting learning.</p><div class="community-group"><h3>Community &amp; leadership</h3><div class="grid">'+SIDE.filter(function(x){return x.group=='community'}).map(communityCard).join('')+'</div></div><div class="community-group"><h3>Mentoring &amp; teaching</h3><div class="grid">'+SIDE.filter(function(x){return x.group=='mentoring'}).map(communityCard).join('')+'</div></div></section><section class="band"><div class="head"><h2>Creative side quests</h2></div><p class="lead">A few moments and things I’ve made beyond computing.</p>'+CREATIVE.filter(function(x){return x.photos.length}).map(creativeGroup).join('')+'</section>'+videos()+'<section class="band"><h2>Awards &amp; recognition</h2><div class="grid" style="margin-top:16px">'+AWARDS.map(card).join('')+'</div></section>'}
 };
 function drag(el,box){var sx,sy,ox,oy;el.addEventListener('pointerdown',function(e){el.setPointerCapture(e.pointerId);sx=e.clientX;sy=e.clientY;ox=el.offsetLeft;oy=el.offsetTop;el.style.zIndex=5;
 function mv(ev){var x=ox+ev.clientX-sx,y=oy+ev.clientY-sy;x=Math.max(0,Math.min(box.clientWidth-el.offsetWidth,x));y=Math.max(0,Math.min(box.clientHeight-el.offsetHeight,y));el.style.left=x+'px';el.style.top=y+'px'}
